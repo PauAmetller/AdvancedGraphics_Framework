@@ -45,3 +45,19 @@ Vector3D NormalShader::computeColor(const Ray& r, const std::vector<Shape*>& obj
         return bgColor;
     }
 }
+
+WhittedShader::WhittedShader() :
+    Shader()
+{ }
+
+WhittedShader::WhittedShader(Vector3D bgColor_) :
+    Shader(bgColor_)
+{ }
+
+Vector3D WhittedShader::computeColor(const Ray& r, const std::vector<Shape*>& objList, const std::vector<LightSource*>& lsList) const
+{
+    //(FILL..)
+
+    return bgColor;
+
+}

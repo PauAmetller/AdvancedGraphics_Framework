@@ -13,9 +13,11 @@ Vector3D Phong::getReflectance(const Vector3D& n, const Vector3D& wo,
     const Vector3D& wi) const {
 
     //FILL(...)
+    Vector3D wr =  n.operator*(dot(wi, n) * 2.0) - wi;
 
-    return Vector3D(0.0);
+    Vector3D color = (getDiffuseReflectance() / PHI) + Ks * pow(dot(wo, wr), alpha);
 
+    return color;
 };
 
 double Phong::getIndexOfRefraction() const

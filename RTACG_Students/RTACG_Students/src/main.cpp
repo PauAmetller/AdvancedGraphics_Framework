@@ -238,6 +238,9 @@ int main()
     else if (shader_name == "normal") {
         shader = new NormalShader(bgColor); //Its not working find out why
     }
+    else if (shader_name == "whitted") {
+        shader = new WhittedShader();
+    }
     //(... normal, whitted) ...
 
   

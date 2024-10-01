@@ -10,7 +10,7 @@ Ke(Ke_), rho_d(rho_d_){}
 
 Vector3D Emissive::getReflectance(const Vector3D& n, const Vector3D& wo,
     const Vector3D& wi) const {
-    return  rho_d/3.1416;
+    return  rho_d/PHI;
 };
 
 double Emissive::getIndexOfRefraction() const

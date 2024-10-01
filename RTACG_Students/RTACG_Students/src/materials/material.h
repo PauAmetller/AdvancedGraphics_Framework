@@ -3,6 +3,8 @@
 
 #include "../core/vector3d.h"
 
+#define PHI 3.14159265358979323846
+
 class Material
 {
 public:
