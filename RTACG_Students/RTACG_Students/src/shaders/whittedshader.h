@@ -1,14 +1,14 @@
-#ifndef NORMALSHADER_H
-#define NORMALSHADER_H
+#ifndef WHITTEDSHADER_H
+#define WHITTEDSHADER_H
 
 #include "shader.h"
 
 
-class NormalShader : public Shader
+class WhittedShader : public Shader
 {
 public:
-    NormalShader();
-    NormalShader(Vector3D bgColor_);
+    WhittedShader();
+    WhittedShader(Vector3D bgColor_);
 
     Vector3D computeColor(const Ray& r,
         const std::vector<Shape*>& objList,
@@ -16,4 +16,4 @@ public:
 
 };
 
-#endif // NORMALSHADER_H
+#endif // WHITTEDSHADER_H

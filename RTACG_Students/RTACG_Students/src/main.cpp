@@ -228,7 +228,7 @@ int main()
     if (shader) {
         delete shader;  // Deallocate the previously allocated shader
     }
-    char* shader_name = "normal";
+    char* shader_name = "depth";
     if (shader_name == "intersaction") {
         shader = new IntersectionShader (intersectionColor, bgColor);
     }

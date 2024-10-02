@@ -1,4 +1,4 @@
-/*#include "normalshader.h"
+#include "normalshader.h"
 #include "../core/utils.h"
 
 NormalShader::NormalShader() :
@@ -22,4 +22,4 @@ Vector3D NormalShader::computeColor(const Ray& r, const std::vector<Shape*>& obj
     else {
         return bgColor;
     }
-}*/
+}
