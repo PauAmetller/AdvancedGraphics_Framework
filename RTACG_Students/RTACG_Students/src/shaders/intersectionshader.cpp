@@ -65,11 +65,12 @@ Vector3D WhittedShader::computeColor(const Ray& r, const std::vector<Shape*>& ob
             PointLightSource* PointLIght = (PointLightSource*)light;
             Vector3D position = PointLIght->sampleLightPosition();
             Vector3D directionShadowRay = position.operator-(its.itsPoint);
-            Ray* LightRay = new Ray(its.itsPoint, directionShadowRay.normalized(), 0.0, Epsilon, directionShadowRay.length() - Epsilon);
+            Ray* LightRay = new Ray(its.itsPoint, directionShadowRay.normalized(), 0.0, Epsilon, -directionShadowRay.length() - Epsilon);
             Intersection itsLight;
-            if (!Utils::getClosestIntersection(*LightRay, objList, its))
+            if (!Utils::getClosestIntersection(*LightRay, objList, itsLight))
             {
-                //color += 
+                Vector3D Incident_light = its.shape->getMaterial().getDiffuseReflectance() * (light->getIntensity() / pow(directionShadowRay.length(), 2));
+                color += Incident_light * its.shape->getMaterial().getReflectance(its.normal/*should be the normal with the dhadowray*/, -directionShadowRay, r.d);
             }
         }
         //color += ambient_light
