@@ -17,10 +17,12 @@
 #include "shaders/intersectionshader.h"
 #include "shaders/depthshader.h"
 #include "shaders/normalshader.h"
+#include "shaders/whittedshader.h"
 
 
 #include "materials/phong.h"
 #include "materials/emissive.h"
+#include "materials/mirror.h"
 
 #include <chrono>
 
@@ -51,7 +53,7 @@ void buildSceneCornellBox(Camera*& cam, Film*& film,
     Material* cyandiffuse = new Phong(Vector3D(0.2, 0.8, 0.8), Vector3D(0, 0, 0), 100);
 
     //Task 5.3
-    //Material* mirror = new Mirror();
+    Material* mirror = new Mirror();
     //Task 5.4
     //Material* transmissive = new Transmissive(0.7);
 
@@ -85,7 +87,7 @@ void buildSceneCornellBox(Camera*& cam, Film*& film,
     sphereTransform2 = Matrix4x4::translate(Vector3D(-1.5, -offset + 3*radius, 4));
     Shape* s2 = new Sphere(radius, sphereTransform2, blueGlossy_80);
 
-    Shape* square = new Square(Vector3D(offset + 0.999, -offset-0.2, 3.0), Vector3D(0.0, 4.0, 0.0), Vector3D(0.0, 0.0, 2.0), Vector3D(-1.0, 0.0, 0.0), cyandiffuse);
+    Shape* square = new Square(Vector3D(offset + 0.999, -offset-0.2, 3.0), Vector3D(0.0, 4.0, 0.0), Vector3D(0.0, 0.0, 2.0), Vector3D(-1.0, 0.0, 0.0), mirror);
 
     myScene.AddObject(s1);
     myScene.AddObject(s2);
@@ -228,7 +230,7 @@ int main()
     if (shader) {
         delete shader;  // Deallocate the previously allocated shader
     }
-    char* shader_name = "depth";
+    char* shader_name = "whitted";
     if (shader_name == "intersaction") {
         shader = new IntersectionShader (intersectionColor, bgColor);
     }
@@ -239,7 +241,7 @@ int main()
         shader = new NormalShader(bgColor); //Its not working find out why
     }
     else if (shader_name == "whitted") {
-        shader = new WhittedShader(bgColor);
+        shader = new WhittedIntegrator(bgColor);
     }
     //(... normal, whitted) ...
 
@@ -251,8 +253,12 @@ int main()
     Camera* cam;
     Scene myScene;
     //Create Scene Geometry and Illumiantion
-    buildSceneSphere(cam, film, myScene); //Task 2,3,4;
-    //buildSceneCornellBox(cam, film, myScene); //Task 5
+    if (shader_name == "intersaction" || shader_name == "depth" || shader_name == "normal") {
+        buildSceneSphere(cam, film, myScene); //Task 2,3,4;
+    }
+    else {
+        buildSceneCornellBox(cam, film, myScene); //Task 5
+    }
 
     //---------------------------------------------------------------------------
 

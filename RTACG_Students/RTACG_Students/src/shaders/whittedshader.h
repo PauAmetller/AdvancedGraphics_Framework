@@ -4,15 +4,17 @@
 #include "shader.h"
 
 
-class WhittedShader : public Shader
+class WhittedIntegrator : public Shader
 {
 public:
-    WhittedShader();
-    WhittedShader(Vector3D bgColor_);
+    WhittedIntegrator();
+    WhittedIntegrator(Vector3D bgColor_);
 
     Vector3D computeColor(const Ray& r,
         const std::vector<Shape*>& objList,
         const std::vector<LightSource*>& lsList) const;
+
+    Vector3D ambient_light = Vector3D(0.15, 0.15, 0.15);
 
 };
 
