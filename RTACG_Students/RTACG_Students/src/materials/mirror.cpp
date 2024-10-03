@@ -7,7 +7,7 @@ Mirror::Mirror()
 
 Vector3D Mirror::getReflectance(const Vector3D& n, const Vector3D& wo,
     const Vector3D& wi) const {
-    return  Vector3D(0.0);
+    return Vector3D(0.0);
 };
 
 double Mirror::getIndexOfRefraction() const
@@ -28,4 +28,19 @@ Vector3D Mirror::getEmissiveRadiance() const
 Vector3D Mirror::getDiffuseReflectance() const
 {
     return Vector3D(0.0);
+}
+
+Vector3D Mirror::ComputeReflectionDirection(const Vector3D& n, const Vector3D& wo) const
+{
+    Vector3D wr = n.operator*(dot(wo, n) * 2.0) - wo;
+
+    return wr;
+}
+
+Vector3D Mirror::ComputeTransmissionDirection(const Vector3D& n, const Vector3D& wo) const
+{
+    std::cout << "Warning! Calling \"Material::ComputeReflectionDirection()\" for a non-transmissive material"
+        << std::endl;
+
+    return -1;
 }

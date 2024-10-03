@@ -10,6 +10,13 @@ WhittedIntegrator::WhittedIntegrator(Vector3D bgColor_) :
     Shader(bgColor_)
 { }
 
+Vector3D WhittedIntegrator::Specular_ReflexionColor(Intersection its, const Ray& r, const std::vector<Shape*>& objList, const std::vector<LightSource*>& lsList) const{
+    Vector3D wr = its.shape->getMaterial().ComputeReflectionDirection(its.normal, -r.d);
+    Ray reflectionRay = Ray(its.itsPoint, wr.normalized(), r.depth + 1);
+    return computeColor(reflectionRay, objList, lsList);
+}
+
+
 Vector3D WhittedIntegrator::computeColor(const Ray& r, const std::vector<Shape*>& objList, const std::vector<LightSource*>& lsList) const
 {
     //(FILL..)
@@ -17,10 +24,23 @@ Vector3D WhittedIntegrator::computeColor(const Ray& r, const std::vector<Shape*>
     Vector3D color = bgColor;
     if (Utils::getClosestIntersection(r, objList, its))
     {
-        if (its.shape->getMaterial().hasSpecular()) {
-            Vector3D wr = its.normal.operator*(dot(-r.d, its.normal) * 2.0) - (-r.d);
-            Ray reflectionRay = Ray(its.itsPoint, wr);
-            color = computeColor(reflectionRay, objList, lsList);
+        const Material& material = its.shape->getMaterial();
+
+        if (material.hasSpecular()) {
+            color = Specular_ReflexionColor(its, r, objList, lsList);
+        }
+        else if (material.hasTransmission()) {
+            Vector3D wt = material.ComputeTransmissionDirection(its.normal, -r.d);
+
+            if (true)//wt.length() != 0.0)
+            {
+                Ray refractRay = Ray(its.itsPoint, wt.normalized(), r.depth + 1);
+                color = computeColor(refractRay, objList, lsList);
+            }
+            else
+            {
+                color = Specular_ReflexionColor(its, r, objList, lsList); //In case Total internal reflection.
+            }
         }
         else {
             for (LightSource* light : lsList)
@@ -38,10 +58,10 @@ Vector3D WhittedIntegrator::computeColor(const Ray& r, const std::vector<Shape*>
                     //Vector3D Incident_light = light->getIntensity() * 10.0 / pow(directionShadowRay.length(), 2);
                     //This is following what the incident light would be to get the same results as figure 7
                     Vector3D Incident_light = light->getIntensity();
-                    color += Incident_light * its.shape->getMaterial().getReflectance(its.normal, -r.d, normalizeddirection) * dot(normalizeddirection, its.normal);
+                    color += Incident_light * material.getReflectance(its.normal, -r.d, normalizeddirection) * dot(normalizeddirection, its.normal);
                 }
             }
-            color += ambient_light * its.shape->getMaterial().getDiffuseReflectance();
+            color += ambient_light * material.getDiffuseReflectance();
         }
     }
 

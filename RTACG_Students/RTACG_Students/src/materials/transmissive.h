@@ -1,18 +1,19 @@
-#ifndef MIRRORMATERIAL
-#define MIRRORMATERIAL
+#ifndef TRANSMISSIVEMATERIAL
+#define TRANSMISSIVEMATERIAL
 
 #include "material.h"
 
-class Mirror : public Material
+class Transmissive : public Material
 {
 public:
-    Mirror();
+    Transmissive();
+    Transmissive(double Ut_);
 
-    Vector3D Mirror::getReflectance(const Vector3D& n, const Vector3D& wo,
+    Vector3D Transmissive::getReflectance(const Vector3D& n, const Vector3D& wo,
         const Vector3D& wi) const;
 
-    bool hasSpecular() const { return true; }
-    bool hasTransmission() const { return false; }
+    bool hasSpecular() const { return false; }
+    bool hasTransmission() const { return true; }
     bool hasDiffuseOrGlossy() const { return false; }
     bool isEmissive() const { return false; }
 
@@ -21,5 +22,10 @@ public:
     Vector3D getDiffuseReflectance() const;
     Vector3D ComputeReflectionDirection(const Vector3D& n, const Vector3D& wo) const;
     Vector3D ComputeTransmissionDirection(const Vector3D& n, const Vector3D& wo) const;
+
+private:
+    double Ut; //transmission ratio
+
 };
 #endif // MATERIAL
+

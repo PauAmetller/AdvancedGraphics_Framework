@@ -23,6 +23,7 @@
 #include "materials/phong.h"
 #include "materials/emissive.h"
 #include "materials/mirror.h"
+#include "materials/transmissive.h"
 
 #include <chrono>
 
@@ -31,6 +32,7 @@ using namespace std::chrono;
 typedef std::chrono::duration<double, std::milli> durationMs;
 
 bool has_mirror = true;
+bool has_transmissive = false;
 char* shader_name = "whitted";
 
 
@@ -58,7 +60,7 @@ void buildSceneCornellBox(Camera*& cam, Film*& film,
     //Task 5.3
     Material* mirror = new Mirror();
     //Task 5.4
-    //Material* transmissive = new Transmissive(0.7);
+    Material* transmissive = new Transmissive(0.7);
 
 
     /* ******* */
@@ -72,6 +74,7 @@ void buildSceneCornellBox(Camera*& cam, Film*& film,
     Shape* topPlan = new InfinitePlan(Vector3D(0, offset, 0), Vector3D(0, -1, 0), greyDiffuse);
     Shape* bottomPlan = new InfinitePlan(Vector3D(0, -offset, 0), Vector3D(0, 1, 0), greyDiffuse);
     Shape* backPlan = new InfinitePlan(Vector3D(0, 0, 3 * offset), Vector3D(0, 0, -1), greyDiffuse);
+
 
     myScene.AddObject(leftPlan);
     myScene.AddObject(rightPlan);
@@ -88,7 +91,11 @@ void buildSceneCornellBox(Camera*& cam, Film*& film,
 
     Matrix4x4 sphereTransform2;
     sphereTransform2 = Matrix4x4::translate(Vector3D(-1.5, -offset + 3*radius, 4));
-    Shape* s2 = new Sphere(radius, sphereTransform2, blueGlossy_80);
+    Shape* s2 = nullptr;
+    if(has_transmissive)
+        s2 = new Sphere(radius, sphereTransform2, transmissive);
+    else
+        s2 = new Sphere(radius, sphereTransform2, blueGlossy_80);
 
     Shape* square = nullptr;
     if(has_mirror)
@@ -249,7 +256,6 @@ int main()
     else if (shader_name == "whitted") {
         shader = new WhittedIntegrator(bgColor);
     }
-    //(... normal, whitted) ...
 
   
 
