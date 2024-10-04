@@ -7,7 +7,7 @@ class Transmissive : public Material
 {
 public:
     Transmissive();
-    Transmissive(double Ut_);
+    Transmissive(double IoR_);
 
     Vector3D Transmissive::getReflectance(const Vector3D& n, const Vector3D& wo,
         const Vector3D& wi) const;
@@ -21,11 +21,10 @@ public:
     Vector3D getEmissiveRadiance() const;
     Vector3D getDiffuseReflectance() const;
     Vector3D ComputeReflectionDirection(const Vector3D& n, const Vector3D& wo) const;
-    Vector3D ComputeTransmissionDirection(const Vector3D& n, const Vector3D& wo) const;
+    Vector3D ComputeTransmissionDirection(const Vector3D& n, const Vector3D& wo, const bool& inside) const;
 
 private:
-    double Ut; //transmission ratio
-
+    double IoR; //transmission ratio
 };
 #endif // MATERIAL
 

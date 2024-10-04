@@ -41,7 +41,7 @@ Vector3D Emissive::ComputeReflectionDirection(const Vector3D& n, const Vector3D&
     return -1;
 }
 
-Vector3D Emissive::ComputeTransmissionDirection(const Vector3D& n, const Vector3D& wo) const
+Vector3D Emissive::ComputeTransmissionDirection(const Vector3D& n, const Vector3D& wo, const bool& inside) const
 {
     std::cout << "Warning! Calling \"Material::ComputeReflectionDirection()\" for a non-transmissive material"
         << std::endl;

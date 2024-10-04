@@ -1,6 +1,7 @@
 #include "whittedshader.h"
 #include "../core/utils.h"
 
+bool inside_an_object = false;
 
 WhittedIntegrator::WhittedIntegrator() :
     Shader()
@@ -22,6 +23,10 @@ Vector3D WhittedIntegrator::computeColor(const Ray& r, const std::vector<Shape*>
     //(FILL..)
     Intersection its;
     Vector3D color = bgColor;
+
+    if (r.depth > 10) {
+        return color;
+    }
     if (Utils::getClosestIntersection(r, objList, its))
     {
         const Material& material = its.shape->getMaterial();
@@ -30,10 +35,12 @@ Vector3D WhittedIntegrator::computeColor(const Ray& r, const std::vector<Shape*>
             color = Specular_ReflexionColor(its, r, objList, lsList);
         }
         else if (material.hasTransmission()) {
-            Vector3D wt = material.ComputeTransmissionDirection(its.normal, -r.d);
-
-            if (true)//wt.length() != 0.0)
+            Vector3D wt = material.ComputeTransmissionDirection(its.normal, -r.d, inside_an_object);
+            //printf("Direction: %f, %f, %f \n", wt.x, wt.y, wt.z);
+            //printf("Origin: %f, %f, %f \n", its.itsPoint.x, its.itsPoint.y, its.itsPoint.z);
+            if (wt.length() != 0.0)
             {
+                inside_an_object = !inside_an_object;
                 Ray refractRay = Ray(its.itsPoint, wt.normalized(), r.depth + 1);
                 color = computeColor(refractRay, objList, lsList);
             }
@@ -42,7 +49,7 @@ Vector3D WhittedIntegrator::computeColor(const Ray& r, const std::vector<Shape*>
                 color = Specular_ReflexionColor(its, r, objList, lsList); //In case Total internal reflection.
             }
         }
-        else {
+        else if (material.hasDiffuseOrGlossy()) {
             for (LightSource* light : lsList)
             {
                 PointLightSource* PointLIght = (PointLightSource*)light;

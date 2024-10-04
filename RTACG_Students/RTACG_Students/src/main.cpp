@@ -32,7 +32,7 @@ using namespace std::chrono;
 typedef std::chrono::duration<double, std::milli> durationMs;
 
 bool has_mirror = true;
-bool has_transmissive = false;
+bool has_transmissive = true;
 char* shader_name = "whitted";
 
 
@@ -186,6 +186,7 @@ void raytrace(Camera* &cam, Shader* &shader, Film* &film,
             Ray cameraRay = cam->generateRay(x, y);
             Vector3D pixelColor = Vector3D(0.0);
 
+            //printf("New Ray \n");
             // Compute ray color according to the used shader
             pixelColor += shader->computeColor(cameraRay, *objectsList, *lightSourceList);
 
