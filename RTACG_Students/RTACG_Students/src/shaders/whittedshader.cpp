@@ -1,7 +1,6 @@
 #include "whittedshader.h"
 #include "../core/utils.h"
 
-bool inside_an_object = false;
 
 WhittedIntegrator::WhittedIntegrator() :
     Shader()
@@ -18,13 +17,14 @@ Vector3D WhittedIntegrator::Specular_ReflexionColor(Intersection its, const Ray&
 }
 
 
+
 Vector3D WhittedIntegrator::computeColor(const Ray& r, const std::vector<Shape*>& objList, const std::vector<LightSource*>& lsList) const
 {
     //(FILL..)
     Intersection its;
     Vector3D color = bgColor;
 
-    if (r.depth > 10) {
+    if (r.depth > 20) {
         return color;
     }
     if (Utils::getClosestIntersection(r, objList, its))
@@ -35,12 +35,17 @@ Vector3D WhittedIntegrator::computeColor(const Ray& r, const std::vector<Shape*>
             color = Specular_ReflexionColor(its, r, objList, lsList);
         }
         else if (material.hasTransmission()) {
-            Vector3D wt = material.ComputeTransmissionDirection(its.normal, -r.d, inside_an_object);
-            //printf("Direction: %f, %f, %f \n", wt.x, wt.y, wt.z);
-            //printf("Origin: %f, %f, %f \n", its.itsPoint.x, its.itsPoint.y, its.itsPoint.z);
+            Vector3D wt;
+            if (dot(its.normal , -r.d) < 0) {
+                wt = material.ComputeTransmissionDirection(-its.normal , -r.d, true);
+            }
+            else {
+                wt = material.ComputeTransmissionDirection(its.normal, -r.d, false);
+            }
+
+            //Check if there's Total internal reflection
             if (wt.length() != 0.0)
             {
-                inside_an_object = !inside_an_object;
                 Ray refractRay = Ray(its.itsPoint, wt.normalized(), r.depth + 1);
                 color = computeColor(refractRay, objList, lsList);
             }
@@ -60,10 +65,11 @@ Vector3D WhittedIntegrator::computeColor(const Ray& r, const std::vector<Shape*>
                 Intersection itsLight;
                 if (!Utils::getClosestIntersection(*LightRay, objList, itsLight))
                 {
-                    /*If the phisics where correct the light would be reduced with the distance, which is the commented incident light,
+                    /*Option_1; If the phisics where correct the light would be reduced with the distance, which is the commented incident light,
                     but so that it looks like the figure 7 in the assigment we put it commented*/
                     //Vector3D Incident_light = light->getIntensity() * 10.0 / pow(directionShadowRay.length(), 2);
-                    //This is following what the incident light would be to get the same results as figure 7
+                    
+                    //Option_2; This is following what the incident light would be to get the same results as figure 7
                     Vector3D Incident_light = light->getIntensity();
                     color += Incident_light * material.getReflectance(its.normal, -r.d, normalizeddirection) * dot(normalizeddirection, its.normal);
                 }

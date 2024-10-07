@@ -43,10 +43,11 @@ Vector3D Transmissive::ComputeTransmissionDirection(const Vector3D& n, const Vec
     double IoR_ = inside ? 1.0 / getIndexOfRefraction() : getIndexOfRefraction() / 1.0;
 
     double dot_n_wo = dot(n, wo);
+
     double s = pow(IoR_, 2.0) * (1.0 - pow(dot_n_wo, 2.0));
 
     if (s > 1.0) {
-        return Vector3D(0.0, 0.0, 0.0);
+        return Vector3D(0.0, 0.0, 0.0);  //This means there's Total Internal Reflection
     }
 
     double squared_value = sqrt( 1.0 - s);
