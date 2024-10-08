@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:RTACG_Students\\RTACG_Students\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shaders\\intersectionshader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:RTACG_Students\\RTACG_Students\\src\\shaders\\intersectionshader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shaders\\intersectionshader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:RTACG_Students\\RTACG_Students\\src\\shaders\\intersectionshader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shapes\\sphere.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:RTACG_Students\\RTACG_Students\\src\\shapes\\sphere.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shapes\\shape.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:RTACG_Students\\RTACG_Students\\src\\shapes\\shape.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\materials\\phong.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:RTACG_Students\\RTACG_Students\\src\\materials\\phong.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:RTACG_Students\\RTACG_Students\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,43 +30,69 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "intersectionshader.h",
-              "DocumentMoniker": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shaders\\intersectionshader.h",
-              "RelativeDocumentMoniker": "RTACG_Students\\RTACG_Students\\src\\shaders\\intersectionshader.h",
-              "ToolTip": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shaders\\intersectionshader.h",
-              "RelativeToolTip": "RTACG_Students\\RTACG_Students\\src\\shaders\\intersectionshader.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC8AAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-10-01T11:00:48.553Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "intersectionshader.cpp",
               "DocumentMoniker": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shaders\\intersectionshader.cpp",
               "RelativeDocumentMoniker": "RTACG_Students\\RTACG_Students\\src\\shaders\\intersectionshader.cpp",
               "ToolTip": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shaders\\intersectionshader.cpp",
               "RelativeToolTip": "RTACG_Students\\RTACG_Students\\src\\shaders\\intersectionshader.cpp",
-              "ViewState": "AQIAACEAAAAAAAAAAAAAADoAAAAOAAAA",
+              "ViewState": "AQIAADwAAAAAAAAAAAAAAEoAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-10-01T11:00:40.485Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "sphere.h",
+              "DocumentMoniker": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shapes\\sphere.h",
+              "RelativeDocumentMoniker": "RTACG_Students\\RTACG_Students\\src\\shapes\\sphere.h",
+              "ToolTip": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shapes\\sphere.h",
+              "RelativeToolTip": "RTACG_Students\\RTACG_Students\\src\\shapes\\sphere.h",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAAAA8AAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-10-01T17:55:34.55Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "shape.h",
+              "DocumentMoniker": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shapes\\shape.h",
+              "RelativeDocumentMoniker": "RTACG_Students\\RTACG_Students\\src\\shapes\\shape.h",
+              "ToolTip": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shapes\\shape.h",
+              "RelativeToolTip": "RTACG_Students\\RTACG_Students\\src\\shapes\\shape.h",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-10-01T17:54:58.436Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "phong.h",
+              "DocumentMoniker": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\materials\\phong.h",
+              "RelativeDocumentMoniker": "RTACG_Students\\RTACG_Students\\src\\materials\\phong.h",
+              "ToolTip": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\materials\\phong.h",
+              "RelativeToolTip": "RTACG_Students\\RTACG_Students\\src\\materials\\phong.h",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABkAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-10-01T16:57:13.801Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\main.cpp",
               "RelativeDocumentMoniker": "RTACG_Students\\RTACG_Students\\src\\main.cpp",
               "ToolTip": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\main.cpp",
               "RelativeToolTip": "RTACG_Students\\RTACG_Students\\src\\main.cpp",
-              "ViewState": "AQIAANgAAAAAAAAAAAAAAPEAAAAlAAAA",
+              "ViewState": "AQIAACsAAAAAAAAAAAAIwFUAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-10-01T10:21:11.941Z",
               "EditorCaption": ""
