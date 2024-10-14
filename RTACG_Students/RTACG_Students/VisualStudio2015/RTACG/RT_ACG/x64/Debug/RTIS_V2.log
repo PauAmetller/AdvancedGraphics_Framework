@@ -1,3 +1,4 @@
-﻿  whittedshader.cpp
-C:\Users\pauam\OneDrive\Documentos\UPF\4rth YEAR\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\shaders\whittedshader.cpp(64,76): warning C4244: 'argumento': conversión de 'double' a 'size_t'; posible pérdida de datos
+﻿  areadirectilluminationshader.cpp
+C:\Users\pauam\OneDrive\Documentos\UPF\4rth YEAR\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\shaders\areadirectilluminationshader.cpp(16,68): warning C4244: 'argumento': conversión de 'double' a 'size_t'; posible pérdida de datos
+C:\Users\pauam\OneDrive\Documentos\UPF\4rth YEAR\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\shaders\areadirectilluminationshader.cpp(83,77): warning C4244: 'argumento': conversión de 'double' a 'size_t'; posible pérdida de datos
   RTIS_V2.vcxproj -> C:\Users\pauam\OneDrive\Documentos\UPF\4rth YEAR\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\VisualStudio2015\RTACG\x64\Debug\RT_ACG.exe

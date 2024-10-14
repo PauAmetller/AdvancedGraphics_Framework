@@ -61,9 +61,9 @@ Vector3D WhittedIntegrator::computeColor(const Ray& r, const std::vector<Shape*>
                 Vector3D position = PointLIght->sampleLightPosition();
                 Vector3D directionShadowRay = position.operator-(its.itsPoint);
                 Vector3D normalizeddirection = directionShadowRay.normalized();
-                Ray* LightRay = new Ray(its.itsPoint, normalizeddirection, 0.0, Epsilon, directionShadowRay.length() - Epsilon);
+                Ray* ShadowRay = new Ray(its.itsPoint, normalizeddirection, 0.0, Epsilon, directionShadowRay.length() - Epsilon);
                 Intersection itsLight;
-                if (!Utils::getClosestIntersection(*LightRay, objList, itsLight))
+                if (!Utils::getClosestIntersection(*ShadowRay, objList, itsLight))
                 {
                     /*Option_1; If the phisics where correct the light would be reduced with the distance, which is the commented incident light,
                     but so that it looks like the figure 7 in the assigment we put it commented*/

@@ -15,8 +15,9 @@ Vector3D Phong::getReflectance(const Vector3D& n, const Vector3D& wo,
     //FILL(...)
     Vector3D wr =  n.operator*(dot(wi, n) * 2.0) - wi;
 
-    Vector3D color = (getDiffuseReflectance() / PHI) + Ks * pow(dot(wo, wr), alpha);
+    Vector3D color = (getDiffuseReflectance() / PHI) + Ks.operator*(2 * PHI / (alpha + 1)) * pow(dot(wo, wr), alpha);
 
+    //where n is the normal at point x. This formulation respects the energy conservation law as long as kd+ks ? 1  (Maybe later its needed for something)
     return color;
 };
 

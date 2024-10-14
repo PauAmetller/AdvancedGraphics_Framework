@@ -123,6 +123,12 @@
     <ClCompile Include="..\..\src\materials\transmissive.cpp">
       <Filter>src\materials</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\shaders\hemisphericaldirectilluminationshader.cpp">
+      <Filter>src\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\shaders\areadirectilluminationshader.cpp">
+      <Filter>src\shaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\cameras\camera.h">
@@ -217,6 +223,12 @@
     </ClInclude>
     <ClInclude Include="..\..\src\materials\transmissive.h">
       <Filter>src\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\shaders\hemisphericaldirectilluminationshader.h">
+      <Filter>src\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\shaders\areadirectilluminationshader.h">
+      <Filter>src\shaders</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

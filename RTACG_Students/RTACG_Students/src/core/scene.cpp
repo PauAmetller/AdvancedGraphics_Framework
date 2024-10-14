@@ -1,5 +1,4 @@
 #include "scene.h"
-#include "../lightsources/arealightsource.h"
 
 Scene::Scene()
 {
@@ -21,3 +20,7 @@ void Scene::AddPointLight(PointLightSource* new_pointLight)
 	LightSourceList->push_back(new_pointLight);
 }
 
+void Scene::AddAreaLight(AreaLightSource* new_areaLight)
+{
+	LightSourceList->push_back(new_areaLight);
+}

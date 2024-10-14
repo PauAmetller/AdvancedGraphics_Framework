@@ -18,6 +18,8 @@
 #include "shaders/depthshader.h"
 #include "shaders/normalshader.h"
 #include "shaders/whittedshader.h"
+#include "shaders/hemisphericaldirectilluminationshader.h"
+#include "shaders/areadirectilluminationshader.h"
 
 
 #include "materials/phong.h"
@@ -33,7 +35,7 @@ typedef std::chrono::duration<double, std::milli> durationMs;
 
 bool has_mirror = true;
 bool has_transmissive = true;
-char* shader_name = "whitted";
+char* shader_name = "ADI";
 
 
 void buildSceneCornellBox(Camera*& cam, Film*& film,
@@ -56,6 +58,7 @@ void buildSceneCornellBox(Camera*& cam, Film*& film,
     Material* blueGlossy_20 = new Phong(Vector3D(0.2, 0.3, 0.8), Vector3D(0.8, 0.8, 0.8), 20);
     Material* blueGlossy_80 = new Phong(Vector3D(0.2, 0.3, 0.8), Vector3D(0.8, 0.8, 0.8), 80);
     Material* cyandiffuse = new Phong(Vector3D(0.2, 0.8, 0.8), Vector3D(0, 0, 0), 100);
+    Material* emissive = new Emissive(Vector3D(25, 25, 25), Vector3D(0.5));
 
     //Task 5.3
     Material* mirror = new Mirror();
@@ -82,6 +85,12 @@ void buildSceneCornellBox(Camera*& cam, Film*& film,
     myScene.AddObject(bottomPlan);
     myScene.AddObject(backPlan);
 
+    Shape* square_emissive = nullptr;
+    if (shader_name == "HDI" || shader_name == "ADI") {
+        square_emissive = new Square(Vector3D(-1.0, 3.0, 3.0), Vector3D(2.0, 0.0, 0.0), Vector3D(0.0, 0.0, 2.0), Vector3D(0.0, -1.0, 0.0), emissive);
+        myScene.AddObject(square_emissive);
+    }
+
 
     // Place the Spheres and square inside the Cornell Box
     double radius = 1;         
@@ -107,9 +116,15 @@ void buildSceneCornellBox(Camera*& cam, Film*& film,
     myScene.AddObject(s2);
     myScene.AddObject(square);
 
-    PointLightSource* myPointLight = new PointLightSource(Vector3D(0, 2.5, 3.0), Vector3D(2.0));
-    myScene.AddPointLight(myPointLight);
-
+    if (shader_name == "whitted") {
+        PointLightSource* myPointLight = new PointLightSource(Vector3D(0, 2.5, 3.0), Vector3D(2.0));
+        myScene.AddPointLight(myPointLight);
+    }
+    if (shader_name == "ADI") {
+        Square* LightSquare = (Square*)square_emissive;
+        AreaLightSource* myAreaLight = new AreaLightSource(LightSquare);
+        myScene.AddAreaLight(myAreaLight);
+    }
 }
 
 
@@ -256,6 +271,12 @@ int main()
     }
     else if (shader_name == "whitted") {
         shader = new WhittedIntegrator(bgColor);
+    }
+    else if (shader_name == "HDI") {
+        shader = new HDIShader(bgColor);
+    }
+    else if (shader_name == "ADI") {
+        shader = new ADIShader(bgColor);
     }
 
   
