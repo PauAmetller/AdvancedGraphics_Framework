@@ -165,6 +165,7 @@
     <ClCompile Include="..\..\src\materials\mirror.cpp" />
     <ClCompile Include="..\..\src\materials\phong.cpp" />
     <ClCompile Include="..\..\src\materials\transmissive.cpp" />
+    <ClCompile Include="..\..\src\shaders\areaaddedindirectillumination.cpp" />
     <ClCompile Include="..\..\src\shaders\areadirectilluminationshader.cpp" />
     <ClCompile Include="..\..\src\shaders\depthshader.cpp" />
     <ClCompile Include="..\..\src\shaders\hemisphericaladdedindirectillumination.cpp" />
@@ -201,6 +202,7 @@
     <ClInclude Include="..\..\src\materials\mirror.h" />
     <ClInclude Include="..\..\src\materials\phong.h" />
     <ClInclude Include="..\..\src\materials\transmissive.h" />
+    <ClInclude Include="..\..\src\shaders\areaaddedindirectillumination.h" />
     <ClInclude Include="..\..\src\shaders\areadirectilluminationshader.h" />
     <ClInclude Include="..\..\src\shaders\depthshader.h" />
     <ClInclude Include="..\..\src\shaders\hemisphericaladdedindirectillumination.h" />

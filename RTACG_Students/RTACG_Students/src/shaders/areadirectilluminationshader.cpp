@@ -43,16 +43,20 @@ Vector3D ADIShader::computeColor(const Ray& r, const std::vector<Shape*>& objLis
                 for (LightSource* light : lsList)
                 {
                     for (int i = 0; i < Number_Samples; i++) {
-                        AreaLightSource* AreaLight = (AreaLightSource*)light;
+                        AreaLightSource* AreaLight = dynamic_cast<AreaLightSource*>(light);
+                        if (!AreaLight) {
+                            continue; // Skip if not an area light
+                        }
                         Vector3D position = AreaLight->sampleLightPosition();
                         Vector3D directionShadowRay = position.operator-(its.itsPoint);
                         Vector3D normalizeddirection = directionShadowRay.normalized();
-                        Ray* ShadowRay = new Ray(its.itsPoint, normalizeddirection, r.depth + 1, Epsilon, directionShadowRay.length() - Epsilon);
+                        Ray ShadowRay = Ray(its.itsPoint, normalizeddirection, r.depth + 1, Epsilon, directionShadowRay.length() - Epsilon);
+
                         Intersection itsLight;
-                        if (!Utils::getClosestIntersection(*ShadowRay, objList, itsLight))
+                        if (!Utils::getClosestIntersection(ShadowRay, objList, itsLight))
                         {
-                            Vector3D Incident_light = light->getIntensity();
-                            Vector3D geometric_term = dot(normalizeddirection, its.normal) * dot(-normalizeddirection, AreaLight->getNormal()) / pow(directionShadowRay.length(), 2.0);
+                            Vector3D Incident_light = AreaLight->getIntensity();
+                            double geometric_term = dot(normalizeddirection, its.normal) * dot(-normalizeddirection, AreaLight->getNormal()) / pow(directionShadowRay.length(), 2.0);
                             direct_light += Incident_light * material.getReflectance(its.normal, -r.d, normalizeddirection) * geometric_term * AreaLight->getArea();
                         }
                     }

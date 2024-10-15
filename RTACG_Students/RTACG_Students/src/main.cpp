@@ -21,6 +21,7 @@
 #include "shaders/hemisphericaldirectilluminationshader.h"
 #include "shaders/areadirectilluminationshader.h"
 #include "shaders/hemisphericaladdedindirectillumination.h"
+#include "shaders/areaaddedindirectillumination.h"
 
 
 #include "materials/phong.h"
@@ -36,7 +37,7 @@ typedef std::chrono::duration<double, std::milli> durationMs;
 
 bool has_mirror = true;
 bool has_transmissive = true;
-char* shader_name = "ADI";
+char* shader_name = "AII";
 
 
 void buildSceneCornellBox(Camera*& cam, Film*& film,
@@ -87,7 +88,7 @@ void buildSceneCornellBox(Camera*& cam, Film*& film,
     myScene.AddObject(backPlan);
 
     Shape* square_emissive = nullptr;
-    if (shader_name == "HDI" || shader_name == "ADI" || shader_name == "HII") {
+    if (shader_name == "HDI" || shader_name == "ADI" || shader_name == "HII" || shader_name == "AII") {
         square_emissive = new Square(Vector3D(-1.0, 3.0, 3.0), Vector3D(2.0, 0.0, 0.0), Vector3D(0.0, 0.0, 2.0), Vector3D(0.0, -1.0, 0.0), emissive);
         myScene.AddObject(square_emissive);
     }
@@ -121,7 +122,7 @@ void buildSceneCornellBox(Camera*& cam, Film*& film,
         PointLightSource* myPointLight = new PointLightSource(Vector3D(0, 2.5, 3.0), Vector3D(2.0));
         myScene.AddPointLight(myPointLight);
     }
-    if (shader_name == "ADI") {
+    if (shader_name == "ADI" || shader_name == "AII") {
         Square* LightSquare = (Square*)square_emissive;
         AreaLightSource* myAreaLight = new AreaLightSource(LightSquare);
         myScene.AddAreaLight(myAreaLight);
@@ -281,6 +282,9 @@ int main()
     }
     else if (shader_name == "HII") {
         shader = new HIIShader(bgColor);
+    }
+    else if (shader_name == "AII") {
+        shader = new AIIShader(bgColor);
     }
 
   

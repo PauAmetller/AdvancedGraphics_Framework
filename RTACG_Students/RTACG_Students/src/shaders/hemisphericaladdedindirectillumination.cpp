@@ -28,14 +28,15 @@ Vector3D HIIShader::ComputeRadiance(const Ray& r, const std::vector<Shape*>& obj
         if (material.isEmissive()) {
             return material.getEmissiveRadiance();
         }
-        Vector3D emitted_light = material.getEmissiveRadiance();
-        radiance += emitted_light;
-        Vector3D wi = HS.getSample(itsR.normal);
-        if (r.depth < MAX_DEPH) {
-            Ray rNew = Ray(itsR.itsPoint, wi, r.depth + 1);
-            radiance += ComputeRadiance(rNew, objList, lsList, MAX_DEPH) * material.getReflectance(itsR.normal, -r.d, rNew.d) * dot(itsR.normal, wi);// *(2 * PHI);
+        else if (material.hasDiffuseOrGlossy()) {
+            Vector3D emitted_light = material.getEmissiveRadiance();
+            radiance += emitted_light;
+            Vector3D wi = HS.getSample(itsR.normal);
+            if (r.depth < MAX_DEPH) {
+                Ray rNew = Ray(itsR.itsPoint, wi, r.depth + 1);
+                radiance += ComputeRadiance(rNew, objList, lsList, MAX_DEPH) * material.getReflectance(itsR.normal, -r.d, rNew.d) * dot(itsR.normal, wi) * (2 * PHI);
+            }
         }
-
     }
     return radiance;
 }
@@ -67,7 +68,7 @@ Vector3D HIIShader::computeColor(const Ray& r, const std::vector<Shape*>& objLis
             Vector3D direct_light = Vector3D(0.0);
             Vector3D indirect_light = Vector3D(0.0);
             if (!sample_incompleted_HII) {
-                indirect_light += ComputeRadiance(r, objList, lsList, 5);
+                indirect_light += ComputeRadiance(r, objList, lsList, 4);
                 color += indirect_light + direct_light;
             }
             else {
@@ -77,7 +78,7 @@ Vector3D HIIShader::computeColor(const Ray& r, const std::vector<Shape*>& objLis
                     Ray new_ray = Ray(its.itsPoint, new_direction, r.depth + 1);
                     Vector3D incoming_light_color = computeColor(new_ray, objList, lsList);
                     direct_light += material.getReflectance(its.normal, -r.d, new_ray.d) * dot(new_ray.d, its.normal) * incoming_light_color * (2 * PHI);
-                    indirect_light += ComputeRadiance(r, objList, lsList, 5);
+                    indirect_light += ComputeRadiance(r, objList, lsList, 4);
                 }
                 color += (indirect_light + direct_light) / Number_Samples;
             }
