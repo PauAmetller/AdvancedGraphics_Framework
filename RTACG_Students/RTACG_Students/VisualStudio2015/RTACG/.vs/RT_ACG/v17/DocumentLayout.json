@@ -3,25 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\VisualStudio2015\\RTACG\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EE03A110-7735-41D4-B6A3-A3801C61B3EB}|RTIS_V2.vcxproj|C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shaders\\hemisphericaldirectilluminationshader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{EE03A110-7735-41D4-B6A3-A3801C61B3EB}|RTIS_V2.vcxproj|C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shaders\\areadirectilluminationshader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EE03A110-7735-41D4-B6A3-A3801C61B3EB}|RTIS_V2.vcxproj|C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shaders\\areadirectilluminationshader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{EE03A110-7735-41D4-B6A3-A3801C61B3EB}|RTIS_V2.vcxproj|C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shaders\\hemisphericaldirectilluminationshader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EE03A110-7735-41D4-B6A3-A3801C61B3EB}|RTIS_V2.vcxproj|C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EE03A110-7735-41D4-B6A3-A3801C61B3EB}|RTIS_V2.vcxproj|C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\materials\\phong.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EE03A110-7735-41D4-B6A3-A3801C61B3EB}|RTIS_V2.vcxproj|C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\materials\\emissive.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EE03A110-7735-41D4-B6A3-A3801C61B3EB}|RTIS_V2.vcxproj|C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shaders\\intersectionshader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\vector||{3B902123-F8A7-4915-9F01-361F908088D0}|"
+      "AbsoluteMoniker": "D:0:0:{EE03A110-7735-41D4-B6A3-A3801C61B3EB}|RTIS_V2.vcxproj|C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shaders\\hemisphericaladdedindirectillumination.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,45 +22,44 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "phong.cpp",
-              "DocumentMoniker": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\materials\\phong.cpp",
-              "RelativeDocumentMoniker": "..\\..\\src\\materials\\phong.cpp",
-              "ToolTip": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\materials\\phong.cpp",
-              "RelativeToolTip": "..\\..\\src\\materials\\phong.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-10-11T11:16:40.134Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "hemisphericaldirectilluminationshader.cpp",
-              "DocumentMoniker": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shaders\\hemisphericaldirectilluminationshader.cpp",
-              "RelativeDocumentMoniker": "..\\..\\src\\shaders\\hemisphericaldirectilluminationshader.cpp",
-              "ToolTip": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shaders\\hemisphericaldirectilluminationshader.cpp",
-              "RelativeToolTip": "..\\..\\src\\shaders\\hemisphericaldirectilluminationshader.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADAAAABKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-10-11T10:08:47.638Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "areadirectilluminationshader.cpp",
               "DocumentMoniker": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shaders\\areadirectilluminationshader.cpp",
               "RelativeDocumentMoniker": "..\\..\\src\\shaders\\areadirectilluminationshader.cpp",
               "ToolTip": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shaders\\areadirectilluminationshader.cpp",
               "RelativeToolTip": "..\\..\\src\\shaders\\areadirectilluminationshader.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADYAAAC3AAAA",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAAD4AAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-10-10T21:27:16.294Z",
+              "WhenOpened": "2024-10-15T15:10:17.419Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "hemisphericaladdedindirectillumination.cpp",
+              "DocumentMoniker": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shaders\\hemisphericaladdedindirectillumination.cpp",
+              "RelativeDocumentMoniker": "..\\..\\src\\shaders\\hemisphericaladdedindirectillumination.cpp",
+              "ToolTip": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shaders\\hemisphericaladdedindirectillumination.cpp",
+              "RelativeToolTip": "..\\..\\src\\shaders\\hemisphericaladdedindirectillumination.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAACXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-10-14T22:40:30.951Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "hemisphericaldirectilluminationshader.cpp",
+              "DocumentMoniker": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shaders\\hemisphericaldirectilluminationshader.cpp",
+              "RelativeDocumentMoniker": "..\\..\\src\\shaders\\hemisphericaldirectilluminationshader.cpp",
+              "ToolTip": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shaders\\hemisphericaldirectilluminationshader.cpp",
+              "RelativeToolTip": "..\\..\\src\\shaders\\hemisphericaldirectilluminationshader.cpp",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAADIAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-10-11T10:08:47.638Z",
               "EditorCaption": ""
             },
             {
@@ -80,46 +70,10 @@
               "RelativeDocumentMoniker": "..\\..\\src\\main.cpp",
               "ToolTip": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\main.cpp",
               "RelativeToolTip": "..\\..\\src\\main.cpp",
-              "ViewState": "AQIAAL0AAAAAAAAAAAAAAFsAAAAFAAAA",
+              "ViewState": "AQIAABoAAAAAAAAAAAAAACYAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-10-02T16:53:02.262Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "emissive.h",
-              "DocumentMoniker": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\materials\\emissive.h",
-              "RelativeDocumentMoniker": "..\\..\\src\\materials\\emissive.h",
-              "ToolTip": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\materials\\emissive.h",
-              "RelativeToolTip": "..\\..\\src\\materials\\emissive.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAABWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-10-04T16:01:46.515Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "intersectionshader.cpp",
-              "DocumentMoniker": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shaders\\intersectionshader.cpp",
-              "RelativeDocumentMoniker": "..\\..\\src\\shaders\\intersectionshader.cpp",
-              "ToolTip": "C:\\Users\\pauam\\OneDrive\\Documentos\\UPF\\4rth YEAR\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shaders\\intersectionshader.cpp",
-              "RelativeToolTip": "..\\..\\src\\shaders\\intersectionshader.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-10-08T14:47:19.355Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "vector",
-              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\vector",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\vector",
-              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\vector",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\vector",
-              "ViewState": "AQIAADoHAAAAAAAAAAAAwFIHAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-10-04T16:25:22.54Z"
             }
           ]
         }

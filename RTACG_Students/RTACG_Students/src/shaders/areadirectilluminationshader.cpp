@@ -24,7 +24,7 @@ Vector3D ADIShader::computeColor(const Ray& r, const std::vector<Shape*>& objLis
     //(FILL..)
     Intersection its;
     Vector3D color = bgColor;
-    int Number_Samples = 96;
+    int Number_Samples = 256;
 
     if (r.depth > 20) {
         return color;
@@ -36,7 +36,7 @@ Vector3D ADIShader::computeColor(const Ray& r, const std::vector<Shape*>& objLis
         if (material.hasDiffuseOrGlossy() || material.isEmissive()) {
 
             Vector3D emitted_radiance = Vector3D(0.0);
-            Vector3D indirect_light = Vector3D(0.0);
+            Vector3D direct_light = Vector3D(0.0);
             Vector3D ambient = Vector3D(0.0);
             if (!material.isEmissive()) {
 
@@ -53,16 +53,16 @@ Vector3D ADIShader::computeColor(const Ray& r, const std::vector<Shape*>& objLis
                         {
                             Vector3D Incident_light = light->getIntensity();
                             Vector3D geometric_term = dot(normalizeddirection, its.normal) * dot(-normalizeddirection, AreaLight->getNormal()) / pow(directionShadowRay.length(), 2.0);
-                            indirect_light += Incident_light * material.getReflectance(its.normal, -r.d, normalizeddirection) * geometric_term * AreaLight->getArea();
+                            direct_light += Incident_light * material.getReflectance(its.normal, -r.d, normalizeddirection) * geometric_term * AreaLight->getArea();
                         }
                     }
                     ambient = ambient_light;
                 }
             }
             else {
-                emitted_radiance = material.getDiffuseReflectance() * material.getEmissiveRadiance();
+                emitted_radiance = material.getEmissiveRadiance();
             }
-            color += emitted_radiance + indirect_light / Number_Samples + ambient * material.getDiffuseReflectance();
+            color += emitted_radiance + direct_light / Number_Samples + ambient * material.getDiffuseReflectance();
         } 
         else if (material.hasSpecular()) {
             color = Specular_ReflexionColor(its, r, objList, lsList);

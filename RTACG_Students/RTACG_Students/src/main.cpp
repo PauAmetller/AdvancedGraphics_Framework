@@ -20,6 +20,7 @@
 #include "shaders/whittedshader.h"
 #include "shaders/hemisphericaldirectilluminationshader.h"
 #include "shaders/areadirectilluminationshader.h"
+#include "shaders/hemisphericaladdedindirectillumination.h"
 
 
 #include "materials/phong.h"
@@ -86,7 +87,7 @@ void buildSceneCornellBox(Camera*& cam, Film*& film,
     myScene.AddObject(backPlan);
 
     Shape* square_emissive = nullptr;
-    if (shader_name == "HDI" || shader_name == "ADI") {
+    if (shader_name == "HDI" || shader_name == "ADI" || shader_name == "HII") {
         square_emissive = new Square(Vector3D(-1.0, 3.0, 3.0), Vector3D(2.0, 0.0, 0.0), Vector3D(0.0, 0.0, 2.0), Vector3D(0.0, -1.0, 0.0), emissive);
         myScene.AddObject(square_emissive);
     }
@@ -277,6 +278,9 @@ int main()
     }
     else if (shader_name == "ADI") {
         shader = new ADIShader(bgColor);
+    }
+    else if (shader_name == "HII") {
+        shader = new HIIShader(bgColor);
     }
 
   
