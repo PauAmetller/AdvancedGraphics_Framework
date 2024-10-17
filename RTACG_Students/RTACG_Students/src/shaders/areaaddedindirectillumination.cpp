@@ -2,7 +2,7 @@
 
 #include "../core/utils.h"
 
-#define MAX_DEPTH 6
+#define MAX_DEPTH 6   //Needs 6 because if not the transmissive bounces arrive to the limit of bounces before reflecting the light
 
 AIIShader::AIIShader() :
     Shader()
