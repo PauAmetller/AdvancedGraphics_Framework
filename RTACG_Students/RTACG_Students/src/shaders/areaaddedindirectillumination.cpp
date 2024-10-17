@@ -2,7 +2,7 @@
 
 #include "../core/utils.h"
 
-#define MAX_DEPTH 4
+#define MAX_DEPTH 6
 
 AIIShader::AIIShader() :
     Shader()
@@ -26,17 +26,51 @@ Vector3D AIIShader::ComputeRadiance(const Ray & r, const std::vector<Shape*>&obj
 
     if (Utils::getClosestIntersection(r, objList, itsR))
     {
-        Lo = itsR.shape->getMaterial().getEmissiveRadiance();
-        Lr = ReflectedRadiance(itsR, -r.d, objList, lsList, r.depth + 1.0);
+            Lo = itsR.shape->getMaterial().getEmissiveRadiance();
+            Lr = ReflectedRadiance(itsR, -r.d, objList, lsList, r.depth + 1.0);
     }
     return Lo + Lr;
 }
 
 Vector3D AIIShader::ReflectedRadiance(const Intersection x, const Vector3D wo, const std::vector<Shape*>& objList, const std::vector<LightSource*>& lsList, int depth) const
 {
-    Vector3D Ldir = ComputeDirectRadiance(x, wo, objList, lsList);
-    Vector3D Lind = ComputeIndirectRadiance(x, wo, objList, lsList, depth);
-    return Ldir + Lind;
+    Vector3D L = Vector3D(0.0);
+    const Material& material = x.shape->getMaterial();
+    if (material.hasDiffuseOrGlossy()) {
+        Vector3D Ldir = ComputeDirectRadiance(x, wo, objList, lsList);
+        Vector3D Lind = ComputeIndirectRadiance(x, wo, objList, lsList, depth);
+        L += Ldir + Lind;
+    }
+    if (depth < MAX_DEPTH) {
+        if (material.hasSpecular()) {
+            Vector3D wr = material.ComputeReflectionDirection(x.normal, wo);
+            Ray reflectionRay = Ray(x.itsPoint, wr.normalized(), depth + 1.0);
+            L += ComputeRadiance(reflectionRay, objList, lsList, reflectionRay.depth);
+        }
+        else if (material.hasTransmission()) {
+            Vector3D wt;
+            if (dot(x.normal, wo) < 0) {
+                wt = material.ComputeTransmissionDirection(-x.normal, wo, true);
+            }
+            else {
+                wt = material.ComputeTransmissionDirection(x.normal, wo, false);
+            }
+
+            //Check if there's Total internal reflection
+            if (wt.length() != 0.0)
+            {
+                Ray refractRay = Ray(x.itsPoint, wt.normalized(), depth + 1.0);
+                L += ComputeRadiance(refractRay, objList, lsList, refractRay.depth);
+            }
+            else
+            {
+                Vector3D wr = material.ComputeReflectionDirection(x.normal, wo);
+                Ray reflectionRay = Ray(x.itsPoint, wr.normalized(), depth + 1.0);
+                L += ComputeRadiance(reflectionRay, objList, lsList, reflectionRay.depth); //In case Total internal reflection.
+            }
+        }
+    }
+    return L;
 }
 
 
@@ -87,7 +121,7 @@ Vector3D AIIShader::computeColor(const Ray& r, const std::vector<Shape*>& objLis
     //(FILL..)
     Intersection its;
     Vector3D color = bgColor;
-    int Number_Samples = 256;
+    int Number_Samples = 30;
 
     if (r.depth > 20) {
         return color;
@@ -106,7 +140,7 @@ Vector3D AIIShader::computeColor(const Ray& r, const std::vector<Shape*>& objLis
                 }
             }
             else {
-                emitted_radiance = material.getEmissiveRadiance();
+                emitted_radiance = material.getEmissiveRadiance(); //If emissive is half result is correct
             }
             color += emitted_radiance + light / Number_Samples;
         }

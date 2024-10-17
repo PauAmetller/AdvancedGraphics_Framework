@@ -42,11 +42,11 @@ Vector3D ADIShader::computeColor(const Ray& r, const std::vector<Shape*>& objLis
 
                 for (LightSource* light : lsList)
                 {
+                    AreaLightSource* AreaLight = dynamic_cast<AreaLightSource*>(light);
+                    if (!AreaLight) {
+                        continue; // Skip if not an area light
+                    }
                     for (int i = 0; i < Number_Samples; i++) {
-                        AreaLightSource* AreaLight = dynamic_cast<AreaLightSource*>(light);
-                        if (!AreaLight) {
-                            continue; // Skip if not an area light
-                        }
                         Vector3D position = AreaLight->sampleLightPosition();
                         Vector3D directionShadowRay = position.operator-(its.itsPoint);
                         Vector3D normalizeddirection = directionShadowRay.normalized();
@@ -64,7 +64,7 @@ Vector3D ADIShader::computeColor(const Ray& r, const std::vector<Shape*>& objLis
                 }
             }
             else {
-                emitted_radiance = material.getEmissiveRadiance();
+                emitted_radiance = material.getEmissiveRadiance(); 
             }
             color += emitted_radiance + direct_light / Number_Samples + ambient * material.getDiffuseReflectance();
         } 

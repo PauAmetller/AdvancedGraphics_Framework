@@ -26,7 +26,7 @@ Vector3D HIIShader::ComputeRadiance(const Ray& r, const std::vector<Shape*>& obj
     {
         const Material& material = itsR.shape->getMaterial();
         if (material.isEmissive()) {
-            return material.getEmissiveRadiance();
+            return material.getEmissiveRadiance(); 
         }
         else if (material.hasDiffuseOrGlossy()) {
             Vector3D emitted_light = material.getEmissiveRadiance();
@@ -35,6 +35,35 @@ Vector3D HIIShader::ComputeRadiance(const Ray& r, const std::vector<Shape*>& obj
             if (r.depth < MAX_DEPH) {
                 Ray rNew = Ray(itsR.itsPoint, wi, r.depth + 1);
                 radiance += ComputeRadiance(rNew, objList, lsList, MAX_DEPH) * material.getReflectance(itsR.normal, -r.d, rNew.d) * dot(itsR.normal, wi) * (2 * PHI);
+            }
+        }
+        if (r.depth < MAX_DEPH) {
+            if (material.hasSpecular()) {
+                Vector3D wr = material.ComputeReflectionDirection(itsR.normal, -r.d);
+                Ray reflectionRay = Ray(itsR.itsPoint, wr.normalized(), r.depth + 1.0);
+                radiance += ComputeRadiance(reflectionRay, objList, lsList, MAX_DEPH);
+            }
+            else if (material.hasTransmission()) {
+                Vector3D wt;
+                if (dot(itsR.normal, -r.d) < 0) {
+                    wt = material.ComputeTransmissionDirection(-itsR.normal, -r.d, true);
+                }
+                else {
+                    wt = material.ComputeTransmissionDirection(itsR.normal, -r.d, false);
+                }
+
+                //Check if there's Total internal reflection
+                if (wt.length() != 0.0)
+                {
+                    Ray refractRay = Ray(itsR.itsPoint, wt.normalized(), r.depth + 1.0);
+                    radiance += ComputeRadiance(refractRay, objList, lsList, MAX_DEPH);
+                }
+                else
+                {
+                    Vector3D wr = material.ComputeReflectionDirection(itsR.normal, -r.d);
+                    Ray reflectionRay = Ray(itsR.itsPoint, wr.normalized(), r.depth + 1.0);
+                    radiance += ComputeRadiance(reflectionRay, objList, lsList, MAX_DEPH); //In case Total internal reflection.
+                }
             }
         }
     }
@@ -65,23 +94,15 @@ Vector3D HIIShader::computeColor(const Ray& r, const std::vector<Shape*>& objLis
         }
         else if (material.hasDiffuseOrGlossy()) {
 
-            Vector3D direct_light = Vector3D(0.0);
-            Vector3D indirect_light = Vector3D(0.0);
-            if (!sample_incompleted_HII) {
-                indirect_light += ComputeRadiance(r, objList, lsList, 4);
-                color += indirect_light + direct_light;
+            Vector3D light = Vector3D(0.0);
+
+            for (int i = 0; i < Number_Samples; i++) {
+                Vector3D new_direction = HS.getSample(its.normal);
+                Ray new_ray = Ray(its.itsPoint, new_direction, r.depth + 1);
+                light += ComputeRadiance(r, objList, lsList, 4);
             }
-            else {
-                sample_incompleted_HII = false;
-                for (int i = 0; i < Number_Samples; i++) {
-                    Vector3D new_direction = HS.getSample(its.normal);
-                    Ray new_ray = Ray(its.itsPoint, new_direction, r.depth + 1);
-                    Vector3D incoming_light_color = computeColor(new_ray, objList, lsList);
-                    direct_light += material.getReflectance(its.normal, -r.d, new_ray.d) * dot(new_ray.d, its.normal) * incoming_light_color * (2 * PHI);
-                    indirect_light += ComputeRadiance(r, objList, lsList, 4);
-                }
-                color += (indirect_light + direct_light) / Number_Samples;
-            }
+            color += light / Number_Samples;
+
         }
         else if (material.hasSpecular()) {
             color = Specular_ReflexionColor(its, r, objList, lsList);

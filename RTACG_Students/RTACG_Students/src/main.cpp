@@ -57,8 +57,8 @@ void buildSceneCornellBox(Camera*& cam, Film*& film,
     Material* redDiffuse = new Phong(Vector3D(0.7, 0.2, 0.3), Vector3D(0, 0, 0), 100);
     Material* greenDiffuse = new Phong(Vector3D(0.2, 0.7, 0.3), Vector3D(0, 0, 0), 100);
     Material* greyDiffuse = new Phong(Vector3D(0.8, 0.8, 0.8), Vector3D(0, 0, 0), 100);      
-    Material* blueGlossy_20 = new Phong(Vector3D(0.2, 0.3, 0.8), Vector3D(0.8, 0.8, 0.8), 20);
-    Material* blueGlossy_80 = new Phong(Vector3D(0.2, 0.3, 0.8), Vector3D(0.8, 0.8, 0.8), 80);
+    Material* blueGlossy_20 = new Phong(Vector3D(0.2, 0.3, 0.8), Vector3D(0.2, 0.2, 0.2), 20);
+    Material* blueGlossy_80 = new Phong(Vector3D(0.2, 0.3, 0.8), Vector3D(0.2, 0.2, 0.2), 80);
     Material* cyandiffuse = new Phong(Vector3D(0.2, 0.8, 0.8), Vector3D(0, 0, 0), 100);
     Material* emissive = new Emissive(Vector3D(25, 25, 25), Vector3D(0.5));
 
@@ -121,11 +121,6 @@ void buildSceneCornellBox(Camera*& cam, Film*& film,
     if (shader_name == "whitted") {
         PointLightSource* myPointLight = new PointLightSource(Vector3D(0, 2.5, 3.0), Vector3D(2.0));
         myScene.AddPointLight(myPointLight);
-    }
-    if (shader_name == "ADI" || shader_name == "AII") {
-        Square* LightSquare = (Square*)square_emissive;
-        AreaLightSource* myAreaLight = new AreaLightSource(LightSquare);
-        myScene.AddAreaLight(myAreaLight);
     }
 }
 

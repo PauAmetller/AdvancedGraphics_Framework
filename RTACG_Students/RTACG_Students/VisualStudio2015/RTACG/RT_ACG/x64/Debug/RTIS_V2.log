@@ -1,4 +1,23 @@
-﻿  areadirectilluminationshader.cpp
+﻿  main.cpp
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\main.cpp(322,21): warning C4244: 'initializing': conversion from '_Rep' to 'float', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\main.cpp(322,21): warning C4244:         with
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\main.cpp(322,21): warning C4244:         [
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\main.cpp(322,21): warning C4244:             _Rep=double
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\main.cpp(322,21): warning C4244:         ]
+  areaaddedindirectillumination.cpp
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\shaders\areaaddedindirectillumination.cpp(17,68): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\shaders\areaaddedindirectillumination.cpp(30,69): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\shaders\areaaddedindirectillumination.cpp(78,71): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\shaders\areaaddedindirectillumination.cpp(105,67): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\shaders\areaaddedindirectillumination.cpp(128,77): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+  areadirectilluminationshader.cpp
 C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\shaders\areadirectilluminationshader.cpp(16,68): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
 C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\shaders\areadirectilluminationshader.cpp(86,77): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
-LINK : fatal error LNK1168: cannot open C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\VisualStudio2015\RTACG\x64\Debug\RT_ACG.exe for writing
+  hemisphericaladdedindirectillumination.cpp
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\shaders\hemisphericaladdedindirectillumination.cpp(17,68): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\shaders\hemisphericaladdedindirectillumination.cpp(101,77): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+  hemisphericaldirectilluminationshader.cpp
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\shaders\hemisphericaldirectilluminationshader.cpp(17,68): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\shaders\hemisphericaldirectilluminationshader.cpp(73,81): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+  Generating Code...
+  RTIS_V2.vcxproj -> C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\VisualStudio2015\RTACG\x64\Debug\RT_ACG.exe

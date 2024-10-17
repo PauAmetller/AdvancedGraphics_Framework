@@ -51,7 +51,7 @@ Vector3D HDIShader::computeColor(const Ray& r, const std::vector<Shape*>& objLis
                 }
                 ambient = ambient_light;
             }
-            Vector3D emitted_radiance = material.getEmissiveRadiance();
+            Vector3D emitted_radiance = material.getEmissiveRadiance();  //La illuminacion reflejada el la bola azul se ve menos que en la foto de ejemplo
             color += emitted_radiance + direct_light / Number_Samples + ambient * material.getDiffuseReflectance();
         } 
         if (sample_incompleted_HDI){
