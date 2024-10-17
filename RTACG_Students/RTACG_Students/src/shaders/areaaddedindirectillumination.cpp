@@ -121,7 +121,7 @@ Vector3D AIIShader::computeColor(const Ray& r, const std::vector<Shape*>& objLis
     //(FILL..)
     Intersection its;
     Vector3D color = bgColor;
-    int Number_Samples = 30;
+    int Number_Samples = 256;
 
     if (r.depth > 20) {
         return color;
