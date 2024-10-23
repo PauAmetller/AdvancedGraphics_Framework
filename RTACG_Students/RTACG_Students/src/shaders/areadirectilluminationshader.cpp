@@ -52,11 +52,10 @@ Vector3D ADIShader::computeColor(const Ray& r, const std::vector<Shape*>& objLis
                         Vector3D normalizeddirection = directionShadowRay.normalized();
                         Ray ShadowRay = Ray(its.itsPoint, normalizeddirection, r.depth + 1, Epsilon, directionShadowRay.length() - Epsilon);
 
-                        Intersection itsLight;
-                        if (!Utils::getClosestIntersection(ShadowRay, objList, itsLight))
+                        if (!Utils::hasIntersection(ShadowRay, objList))
                         {
                             Vector3D Incident_light = AreaLight->getIntensity();
-                            double geometric_term = dot(normalizeddirection, its.normal) * dot(-normalizeddirection, AreaLight->getNormal()) / pow(directionShadowRay.length(), 2.0);
+                            double geometric_term = dot(normalizeddirection, its.normal) * dot(-normalizeddirection, AreaLight->getNormal()) / directionShadowRay.lengthSq();
                             direct_light += Incident_light * material.getReflectance(its.normal, -r.d, normalizeddirection) * geometric_term * AreaLight->getArea();
                         }
                     }

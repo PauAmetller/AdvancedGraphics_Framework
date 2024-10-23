@@ -129,10 +129,10 @@
     <ClCompile Include="..\..\src\shaders\areadirectilluminationshader.cpp">
       <Filter>src\shaders</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\shaders\hemisphericaladdedindirectillumination.cpp">
+    <ClCompile Include="..\..\src\shaders\purepathtracing.cpp">
       <Filter>src\shaders</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\shaders\areaaddedindirectillumination.cpp">
+    <ClCompile Include="..\..\src\shaders\nexteventestimation.cpp">
       <Filter>src\shaders</Filter>
     </ClCompile>
   </ItemGroup>
@@ -236,10 +236,10 @@
     <ClInclude Include="..\..\src\shaders\areadirectilluminationshader.h">
       <Filter>src\shaders</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\shaders\hemisphericaladdedindirectillumination.h">
+    <ClInclude Include="..\..\src\shaders\purepathtracing.h">
       <Filter>src\shaders</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\shaders\areaaddedindirectillumination.h">
+    <ClInclude Include="..\..\src\shaders\nexteventestimation.h">
       <Filter>src\shaders</Filter>
     </ClInclude>
   </ItemGroup>

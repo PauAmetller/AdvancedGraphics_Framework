@@ -165,10 +165,10 @@
     <ClCompile Include="..\..\src\materials\mirror.cpp" />
     <ClCompile Include="..\..\src\materials\phong.cpp" />
     <ClCompile Include="..\..\src\materials\transmissive.cpp" />
-    <ClCompile Include="..\..\src\shaders\areaaddedindirectillumination.cpp" />
+    <ClCompile Include="..\..\src\shaders\nexteventestimation.cpp" />
     <ClCompile Include="..\..\src\shaders\areadirectilluminationshader.cpp" />
     <ClCompile Include="..\..\src\shaders\depthshader.cpp" />
-    <ClCompile Include="..\..\src\shaders\hemisphericaladdedindirectillumination.cpp" />
+    <ClCompile Include="..\..\src\shaders\purepathtracing.cpp" />
     <ClCompile Include="..\..\src\shaders\hemisphericaldirectilluminationshader.cpp" />
     <ClCompile Include="..\..\src\shaders\intersectionshader.cpp" />
     <ClCompile Include="..\..\src\shaders\normalshader.cpp" />
@@ -202,10 +202,10 @@
     <ClInclude Include="..\..\src\materials\mirror.h" />
     <ClInclude Include="..\..\src\materials\phong.h" />
     <ClInclude Include="..\..\src\materials\transmissive.h" />
-    <ClInclude Include="..\..\src\shaders\areaaddedindirectillumination.h" />
+    <ClInclude Include="..\..\src\shaders\nexteventestimation.h" />
     <ClInclude Include="..\..\src\shaders\areadirectilluminationshader.h" />
     <ClInclude Include="..\..\src\shaders\depthshader.h" />
-    <ClInclude Include="..\..\src\shaders\hemisphericaladdedindirectillumination.h" />
+    <ClInclude Include="..\..\src\shaders\purepathtracing.h" />
     <ClInclude Include="..\..\src\shaders\hemisphericaldirectilluminationshader.h" />
     <ClInclude Include="..\..\src\shaders\intersectionshader.h" />
     <ClInclude Include="..\..\src\shaders\normalshader.h" />
