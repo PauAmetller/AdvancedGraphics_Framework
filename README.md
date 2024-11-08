@@ -1,5 +1,5 @@
 # AdvancedGraphics_Framework
- Ray Tracing and Volumetric Rendering
+ Ray Tracing
 
 
 **Description**
