@@ -46,7 +46,7 @@ void RendererCaching::IrradianceCache(Camera*& cam, Film* film,
     }
 
     // Once we've finished subdividing and caching, we need to paint the leaf nodes white
-    paintAll(film, cam, objectsList, lightSourceList);
+    //paintAll(film, cam, objectsList, lightSourceList);
     paintLeafNodesWhite(this->octree_root, film);
 }
 
