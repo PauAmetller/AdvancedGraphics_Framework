@@ -23,6 +23,7 @@
 #include "shaders/purepathtracing.h"
 #include "shaders/nexteventestimation.h"
 
+#include "renderers/RendererCaching.h"
 
 #include "materials/phong.h"
 #include "materials/emissive.h"
@@ -37,7 +38,8 @@ typedef std::chrono::duration<double, std::milli> durationMs;
 
 bool has_mirror = true;
 bool has_transmissive = true;
-char* shader_name = "NEE";
+char* shader_name = "NEE";   //intersaction, depth, normal, whitted, HDI, ADI, PPT, NEE
+char* rendering_mode = "Caching"; //Caching, Whitout Caching
 
 
 void buildSceneCornellBox(Camera*& cam, Film*& film,
@@ -206,8 +208,6 @@ void raytrace(Camera* &cam, Shader* &shader, Film* &film,
             film->setPixelValue(col, lin, pixelColor);
         }
     }
-
-
 }
 
 
@@ -244,7 +244,20 @@ int main()
 
     // Create an empty film
     Film *film;
-    film = new Film(720, 512);
+
+    if (rendering_mode == "Caching") {
+        film = new Film(1024, 1024);   //We make it square to prevent possible problems with the Octree
+    }
+    else {
+        film = new Film(720, 512); //default
+    }
+
+    //For IrradianceCaching desactivate mirrors and transmissive materials
+    if (rendering_mode == "Caching") {
+        has_mirror = false;
+        has_transmissive = false;
+        shader_name == "NEE";
+    }
 
 
     // Declare the shader
@@ -257,14 +270,15 @@ int main()
     if (shader) {
         delete shader;  // Deallocate the previously allocated shader
     }
+
     if (shader_name == "intersaction") {
-        shader = new IntersectionShader (intersectionColor, bgColor);
+        shader = new IntersectionShader(intersectionColor, bgColor);
     }
     else if (shader_name == "depth") {
         shader = new DepthShader(intersectionColorG, 7.5f, bgColor);
     }
     else if (shader_name == "normal") {
-        shader = new NormalShader(bgColor); //Its not working find out why
+        shader = new NormalShader(bgColor); 
     }
     else if (shader_name == "whitted") {
         shader = new WhittedIntegrator(bgColor);
@@ -279,9 +293,13 @@ int main()
         shader = new PPTShader(bgColor);
     }
     else if (shader_name == "NEE") {
-        shader = new NEEShader(bgColor);
+        if (rendering_mode == "Caching") {
+            shader = new NEEShader(bgColor, 3);
+        }
+        else {
+            shader = new NEEShader(bgColor);
+        }
     }
-
   
 
     // Build the scene---------------------------------------------------------
@@ -300,11 +318,19 @@ int main()
     //---------------------------------------------------------------------------
 
     //Paint Image ONLY TASK 1
-    PaintImage(film);
+    //PaintImage(film);
+
+    //Preferably a shader that calculates the radiance, if not it won't be correct to use it for irradiance caching //use NEE (with out mirrors and transmissives)
+    RendererCaching* caching = new RendererCaching(shader);
 
     // Launch some rays! TASK 2,3,...   
     auto start = high_resolution_clock::now();
-    raytrace(cam, shader, film, myScene.objectsList, myScene.LightSourceList);
+    if (rendering_mode == "Caching") {
+        caching->IrradianceCache(cam, film, myScene.objectsList, myScene.LightSourceList);
+    }
+    else {
+        raytrace(cam, shader, film, myScene.objectsList, myScene.LightSourceList);
+    }
     auto stop = high_resolution_clock::now();
 
     

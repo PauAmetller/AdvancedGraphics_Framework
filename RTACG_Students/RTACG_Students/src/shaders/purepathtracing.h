@@ -21,6 +21,7 @@ public:
     Vector3D ComputeRadiance(const Ray& r, const std::vector<Shape*>& objList,
         const std::vector<LightSource*>& lsList, int MAX_DEPH) const;
 
+
     HemisphericalSampler HS = HemisphericalSampler();
 
 };

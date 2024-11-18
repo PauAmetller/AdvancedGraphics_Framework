@@ -10,6 +10,7 @@ class NEEShader : public Shader
 public:
     NEEShader();
     NEEShader(Vector3D bgColor_);
+    NEEShader(Vector3D bgColor_, int max_depth_);
 
     Vector3D computeColor(const Ray& r,
         const std::vector<Shape*>& objList,
@@ -25,6 +26,7 @@ public:
 
 
     HemisphericalSampler HS = HemisphericalSampler();
+    int max_depth;
 
 };
 

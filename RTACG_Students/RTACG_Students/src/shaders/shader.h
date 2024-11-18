@@ -19,6 +19,9 @@ public:
                              const std::vector<Shape*> &objList,
                              const std::vector<LightSource*> &lsList) const = 0;
 
+    //Only for NEE to try irradiance caching
+    virtual Vector3D ComputeRadiance(const Ray& r, const std::vector<Shape*>& objList, const std::vector<LightSource*>& lsList, int depth) const = 0;
+
     Vector3D bgColor;
 };
 

@@ -1,24 +1,29 @@
 ﻿  main.cpp
-C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\main.cpp(317,21): warning C4244: 'initializing': conversion from '_Rep' to 'float', possible loss of data
-C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\main.cpp(317,21): warning C4244:         with
-C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\main.cpp(317,21): warning C4244:         [
-C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\main.cpp(317,21): warning C4244:             _Rep=double
-C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\main.cpp(317,21): warning C4244:         ]
-  nexteventestimation.cpp
-C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\shaders\nexteventestimation.cpp(17,68): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
-C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\shaders\nexteventestimation.cpp(30,73): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\shaders\nexteventestimation.cpp(47,72): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
-C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\shaders\nexteventestimation.cpp(48,79): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\shaders\nexteventestimation.cpp(62,73): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
-C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\shaders\nexteventestimation.cpp(63,77): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\shaders\nexteventestimation.cpp(68,76): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
-C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\shaders\nexteventestimation.cpp(69,83): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\shaders\nexteventestimation.cpp(112,71): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\shaders\nexteventestimation.cpp(139,67): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\shaders\nexteventestimation.cpp(162,77): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\main.cpp(342,21): warning C4244: 'initializing': conversion from '_Rep' to 'float', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\main.cpp(342,21): warning C4244:         with
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\main.cpp(342,21): warning C4244:         [
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\main.cpp(342,21): warning C4244:             _Rep=double
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\main.cpp(342,21): warning C4244:         ]
+  RendererCaching.cpp
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(23,14): warning C4244: 'initializing': conversion from 'double' to 'size_t', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(24,14): warning C4244: 'initializing': conversion from 'double' to 'size_t', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(30,41): warning C4244: 'argument': conversion from 'size_t' to 'const double', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(30,38): warning C4244: 'argument': conversion from 'size_t' to 'const double', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(34,77): warning C4244: 'argument': conversion from 'size_t' to 'double', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(34,74): warning C4244: 'argument': conversion from 'size_t' to 'double', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(34,61): warning C4244: 'argument': conversion from 'const _Ty' to 'double', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(34,61): warning C4244:         with
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(34,61): warning C4244:         [
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(34,61): warning C4244:             _Ty=size_t
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(34,61): warning C4244:         ]
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(57,89): warning C4244: 'argument': conversion from 'size_t' to 'double', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(57,70): warning C4244: 'argument': conversion from 'size_t' to 'double', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(87,108): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(143,48): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(143,37): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
   Generating code
-  3 of 1027 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    12 functions had inline decision re-evaluated but remain unchanged
+  12 of 1177 functions ( 1.0%) were compiled, the rest were copied from previous compilation.
+    4 functions were new in current compilation
+    18 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   RTIS_V2.vcxproj -> C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\VisualStudio2015\RTACG\x64\Release\RT_ACG.exe

@@ -6,11 +6,21 @@
 
 NEEShader::NEEShader() :
     Shader()
-{ }
+{ 
+    max_depth = 6;
+}
 
 NEEShader::NEEShader(Vector3D bgColor_) :
     Shader(bgColor_)
-{ }
+{
+    max_depth = 6;
+}
+
+NEEShader::NEEShader(Vector3D bgColor_, int max_depth_) :
+    Shader(bgColor_)
+{
+    max_depth = max_depth_;
+}
 
 Vector3D NEEShader::Specular_ReflexionColor(Intersection its, const Ray& r, const std::vector<Shape*>& objList, const std::vector<LightSource*>& lsList) const {
     Vector3D wr = its.shape->getMaterial().ComputeReflectionDirection(its.normal, -r.d);

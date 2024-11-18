@@ -14,6 +14,8 @@ public:
                              const std::vector<Shape*> &objList,
                              const std::vector<LightSource*> &lsList) const;
 
+    Vector3D ComputeRadiance(const Ray& r, const std::vector<Shape*>& objList, const std::vector<LightSource*>& lsList, int depth) const { return  Vector3D(0.0); };
+
 private:
     double maxDist;
     Vector3D color;

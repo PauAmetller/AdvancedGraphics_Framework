@@ -34,6 +34,9 @@
     <Filter Include="src\shapes">
       <UniqueIdentifier>{471790e2-2b7b-4bb4-843a-8f2850c9ecfc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\renderers">
+      <UniqueIdentifier>{0a01a430-3725-4b6e-bbfa-6246e6efd91f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\main.cpp">
@@ -134,6 +137,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\shaders\nexteventestimation.cpp">
       <Filter>src\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\renderers\RendererCaching.cpp">
+      <Filter>src\renderers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -241,6 +247,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\shaders\nexteventestimation.h">
       <Filter>src\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\renderers\RendererCaching.h">
+      <Filter>src\renderers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
