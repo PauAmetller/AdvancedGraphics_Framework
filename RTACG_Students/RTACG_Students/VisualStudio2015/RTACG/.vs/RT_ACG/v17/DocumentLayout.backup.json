@@ -3,13 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\pauam\\Documents\\GitHub\\Advanced Computer Graphics\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\VisualStudio2015\\RTACG\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EE03A110-7735-41D4-B6A3-A3801C61B3EB}|RTIS_V2.vcxproj|C:\\Users\\pauam\\Documents\\GitHub\\Advanced Computer Graphics\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\renderers\\RendererCaching.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{EE03A110-7735-41D4-B6A3-A3801C61B3EB}|RTIS_V2.vcxproj|C:\\Users\\pauam\\Documents\\GitHub\\Advanced Computer Graphics\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{EE03A110-7735-41D4-B6A3-A3801C61B3EB}|RTIS_V2.vcxproj|C:\\Users\\pauam\\Documents\\GitHub\\Advanced Computer Graphics\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\renderers\\RendererCaching.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{EE03A110-7735-41D4-B6A3-A3801C61B3EB}|RTIS_V2.vcxproj|C:\\Users\\pauam\\Documents\\GitHub\\Advanced Computer Graphics\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\renderers\\RendererCaching.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE03A110-7735-41D4-B6A3-A3801C61B3EB}|RTIS_V2.vcxproj|C:\\Users\\pauam\\Documents\\GitHub\\Advanced Computer Graphics\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shaders\\nexteventestimation.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EE03A110-7735-41D4-B6A3-A3801C61B3EB}|RTIS_V2.vcxproj|C:\\Users\\pauam\\Documents\\GitHub\\Advanced Computer Graphics\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\materials\\emissive.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
@@ -28,7 +31,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
@@ -38,20 +41,21 @@
               "RelativeDocumentMoniker": "..\\..\\src\\renderers\\RendererCaching.h",
               "ToolTip": "C:\\Users\\pauam\\Documents\\GitHub\\Advanced Computer Graphics\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\renderers\\RendererCaching.h",
               "RelativeToolTip": "..\\..\\src\\renderers\\RendererCaching.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIgAAABxAAAAAAAAAA==",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAADwAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-11-17T12:13:35.985Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "RendererCaching.cpp",
               "DocumentMoniker": "C:\\Users\\pauam\\Documents\\GitHub\\Advanced Computer Graphics\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\renderers\\RendererCaching.cpp",
               "RelativeDocumentMoniker": "..\\..\\src\\renderers\\RendererCaching.cpp",
               "ToolTip": "C:\\Users\\pauam\\Documents\\GitHub\\Advanced Computer Graphics\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\renderers\\RendererCaching.cpp",
               "RelativeToolTip": "..\\..\\src\\renderers\\RendererCaching.cpp",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAADAAAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAAPMAAAAAAAAAAAAAAAoBAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-17T12:19:17.2Z",
               "IsPinned": true,
@@ -64,6 +68,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "nexteventestimation.cpp",
+              "DocumentMoniker": "C:\\Users\\pauam\\Documents\\GitHub\\Advanced Computer Graphics\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shaders\\nexteventestimation.cpp",
+              "RelativeDocumentMoniker": "..\\..\\src\\shaders\\nexteventestimation.cpp",
+              "ToolTip": "C:\\Users\\pauam\\Documents\\GitHub\\Advanced Computer Graphics\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shaders\\nexteventestimation.cpp",
+              "RelativeToolTip": "..\\..\\src\\shaders\\nexteventestimation.cpp",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-19T20:46:46.339Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "emissive.cpp",
               "DocumentMoniker": "C:\\Users\\pauam\\Documents\\GitHub\\Advanced Computer Graphics\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\materials\\emissive.cpp",
               "RelativeDocumentMoniker": "..\\..\\src\\materials\\emissive.cpp",
@@ -75,7 +92,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "phong.cpp",
               "DocumentMoniker": "C:\\Users\\pauam\\Documents\\GitHub\\Advanced Computer Graphics\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\materials\\phong.cpp",
               "RelativeDocumentMoniker": "..\\..\\src\\materials\\phong.cpp",
@@ -87,7 +104,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "whittedshader.cpp",
               "DocumentMoniker": "C:\\Users\\pauam\\Documents\\GitHub\\Advanced Computer Graphics\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\shaders\\whittedshader.cpp",
               "RelativeDocumentMoniker": "..\\..\\src\\shaders\\whittedshader.cpp",
@@ -99,13 +116,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Users\\pauam\\Documents\\GitHub\\Advanced Computer Graphics\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\main.cpp",
               "RelativeDocumentMoniker": "..\\..\\src\\main.cpp",
               "ToolTip": "C:\\Users\\pauam\\Documents\\GitHub\\Advanced Computer Graphics\\AdvancedGraphics_Framework\\RTACG_Students\\RTACG_Students\\src\\main.cpp",
               "RelativeToolTip": "..\\..\\src\\main.cpp",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAAACkAAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAAOcAAAAAAAAAAAAAACoAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-10-15T18:11:00.064Z",
               "EditorCaption": ""

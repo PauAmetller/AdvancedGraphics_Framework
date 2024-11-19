@@ -6,7 +6,7 @@ RendererCaching* RendererCaching::instance = nullptr;
 
 //Constructor
 RendererCaching::RendererCaching(Shader* shader) {
-    this->max_nodes = 3000;
+    this->max_nodes = 100000;
     this->node_count = 0;
     this->shader = shader;
     this->num_samples = 254;
@@ -18,7 +18,7 @@ RendererCaching::RendererCaching(Shader* shader) {
 
 //Builds the Octree where the sample points are stored
 void RendererCaching::IrradianceCache(Camera*& cam, Film* film,
-    std::vector<Shape*>*& objectsList, std::vector<LightSource*>*& lightSourceList) {
+    std::vector<Shape*>*& objectsList, std::vector<LightSource*>*& lightSourceList, bool only_irradiance, bool samples_seen) {
 
     size_t X = (film->getWidth() + 0.5) / 2.0;
     size_t Y = (film->getHeight() + 0.5) / 2.0;
@@ -44,10 +44,13 @@ void RendererCaching::IrradianceCache(Camera*& cam, Film* film,
         std::cerr << "Point (" << its.itsPoint.x << ", " << its.itsPoint.y << ", " << its.itsPoint.z
             << ") does not intersect any surface.\n";
     }
+    std::cerr << this->node_count << std::endl;
 
     // Once we've finished subdividing and caching, we need to paint the leaf nodes white
-    //paintAll(film, cam, objectsList, lightSourceList);
-    paintLeafNodesWhite(this->octree_root, film);
+    paintAll(film, cam, objectsList, lightSourceList, only_irradiance);
+    if (samples_seen) {
+        paintLeafNodesWhite(this->octree_root, film);
+    }
 }
 
 void RendererCaching::subdivideAndCache(OctreeNode* node, Camera* cam, Film* film, std::vector<Shape*>*& objectsList, std::vector<LightSource*>*& lightSourceList) {
@@ -70,6 +73,7 @@ void RendererCaching::subdivideAndCache(OctreeNode* node, Camera* cam, Film* fil
             }
         }
     }
+
 }
 
 void RendererCaching::ComputeIrradiance(OctreeNode* node, Camera* cam, std::vector<Shape*>*& objectsList, std::vector<LightSource*>*& lightSourceList) {
@@ -97,8 +101,7 @@ void RendererCaching::ComputeIrradiance(OctreeNode* node, Camera* cam, std::vect
 }
 
 
-void RendererCaching::paintAll(Film* film, Camera*& cam,
-    std::vector<Shape*>*& objectsList, std::vector<LightSource*>*& lightSourceList) {
+void RendererCaching::paintAll(Film* film, Camera*& cam, std::vector<Shape*>*& objectsList, std::vector<LightSource*>*& lightSourceList, bool only_irradiance) {
 
     size_t resX = film->getWidth();
     size_t resY = film->getHeight();
@@ -124,8 +127,14 @@ void RendererCaching::paintAll(Film* film, Camera*& cam,
             //printf("New Ray \n");
             Intersection its;
             if (Utils::getClosestIntersection(cameraRay, *objectsList, its)) {
-                const Material& material = its.shape->getMaterial();
-                pixelColor += GetIrradiance(its.itsPoint, its.normal) * material.getDiffuseReflectance();
+                if (only_irradiance) {
+                    pixelColor += GetIrradiance(col, lin, its.itsPoint, its.normal, objectsList);
+                }
+                else {
+                    const Material& material = its.shape->getMaterial();
+                    pixelColor += GetIrradiance(col, lin, its.itsPoint, its.normal, objectsList) * material.getDiffuseReflectance();
+                    pixelColor += material.getEmissiveRadiance();
+                }
             }
 
             // Store the pixel color
@@ -151,14 +160,14 @@ void RendererCaching::paintLeafNodesWhite(OctreeNode* node, Film* film) {
 }
 
 // Function to find irradiance at a point by traversing the octree
-Vector3D RendererCaching::GetIrradiance(const Vector3D& point, const Vector3D& normal) {
+Vector3D RendererCaching::GetIrradiance(double col, double lin, const Vector3D& point, const Vector3D& normal, std::vector<Shape*>*& objectsList) {
 
     // Radius of influence for nearby nodes
     const double radiusOfInfluenceFactor = 5;  // Adjust based on application needs
 
-    std::vector<std::shared_ptr<OctreeNode>> nodesToCheck = { std::shared_ptr<OctreeNode>(this->octree_root) };
-    std::vector<std::shared_ptr<OctreeNode>> leafNodes;
-    std::shared_ptr<OctreeNode> currentNode;
+    std::vector<OctreeNode*> nodesToCheck = { this->octree_root };
+    std::vector<OctreeNode*> leafNodes;
+    OctreeNode* currentNode;
 
     double max_size = this->octree_root->size;
 
@@ -174,7 +183,7 @@ Vector3D RendererCaching::GetIrradiance(const Vector3D& point, const Vector3D& n
         double effectiveRadiusOfInfluence = radiusOfInfluenceFactor * (currentNode->size / max_size);
 
         // Check if the point is within the node's region or nearby
-        if (isPointInsideRegion(point, currentNode->center, currentNode->size) || distanceToNode <= effectiveRadiusOfInfluence) {
+        if (isPointInsideRegion(col, lin, currentNode->col, currentNode->lin, currentNode->size) || distanceToNode <= effectiveRadiusOfInfluence) {
 
             // If it's a leaf node, consider it for interpolation
             if (currentNode->isLeaf) {
@@ -182,7 +191,8 @@ Vector3D RendererCaching::GetIrradiance(const Vector3D& point, const Vector3D& n
             }
             else {
                 // Add children to the stack for further traversal
-                for (const std::shared_ptr<OctreeNode>& child : currentNode->children) {
+                for (const std::shared_ptr<OctreeNode>& child_ : currentNode->children) {
+                    OctreeNode* child = child_.get();
                     if (child) { // Ensure child is not null
                         nodesToCheck.push_back(child);
                     }
@@ -191,26 +201,23 @@ Vector3D RendererCaching::GetIrradiance(const Vector3D& point, const Vector3D& n
         }
     }
 
-    std::cerr << "Hello" << endl;
-
     // Interpolate irradiance from the candidate nodes
     if (!leafNodes.empty()) {
-        return interpolateIrradiance(point, normal, leafNodes);
+        return interpolateIrradiance(point, normal, leafNodes, 0.3, 5.0, 0.001);
     }
     else {
         return Vector3D(0.0);  // Return 0 if no suitable nodes are found
     }
 }
 
-bool RendererCaching::isPointInsideRegion(const Vector3D& point, const Vector3D& center, double size) {
-    double halfSize = size;
-    return (point.x >= center.x - halfSize && point.x <= center.x + halfSize &&
-        point.y >= center.y - halfSize && point.y <= center.y + halfSize &&
-        point.z >= center.z - halfSize && point.z <= center.z + halfSize);
+bool RendererCaching::isPointInsideRegion(double col, double lin, double node_col, double node_lin , double size) {
+    double halfSize = size * 20;
+    return (col >= node_col - halfSize && col <= node_col + halfSize &&
+        lin >= node_lin - halfSize && lin <= node_lin + halfSize);
 }
 
-// Interpolate irradiance at a given point
-Vector3D RendererCaching::interpolateIrradiance(const Vector3D& p, const Vector3D& n, std::vector<std::shared_ptr<OctreeNode>> nodes, double a) {
+
+Vector3D RendererCaching::interpolateIrradiance(const Vector3D& p, const Vector3D& n, std::vector<OctreeNode*> nodes, double alpha, double beta, double minWeight) {
     Vector3D numerator = { 0.0, 0.0, 0.0 };
     double denominator = 0.0;
 
@@ -218,31 +225,32 @@ Vector3D RendererCaching::interpolateIrradiance(const Vector3D& p, const Vector3
         Vector3D pi = node->center;
         Vector3D ni = node->its.normal;
         Vector3D Ei = node->irradiance;
-        //Vector3D rotGrad = node->rotGrad;
-        //Vector3D transGrad = node->transGrad;
 
-        // Compute weight
+        // Compute distance and orientation differences
         double distance = (p - pi).length();
-        double orientation = std::sqrt(1.0 - dot(n, ni));
-        double weight = 1.0 / (distance + orientation);
+        double orientation = 1.0 - dot(n.normalized(), ni.normalized());
+
+        // Weight using Gaussian falloff for both distance and orientation
+        double weight = exp(-alpha * distance * distance) * exp(-beta * orientation * orientation);
 
         // Apply tolerance filter
-        if (weight > 1.0 / a) {
-            // Compute contributions
-            Vector3D rotationalContrib = computeRotationalGradient(n, ni);// , rotGrad);
-            Vector3D translationalContrib = computeTranslationalGradient(p, pi);// , transGrad);
-
-            // Irradiance contribution
-            Vector3D irradianceContrib = Ei + rotationalContrib + translationalContrib;
-            numerator = numerator + (irradianceContrib * weight);
+        if (weight >= minWeight) {
+            // Accumulate irradiance contribution
+            numerator = numerator + (Ei * weight);
             denominator += weight;
         }
     }
 
+    // Prevent division by zero with a small epsilon threshold
+    const double EPSILON = 1e-6;
+    if (denominator < EPSILON) return Vector3D{ 0.0, 0.0, 0.0 };
+
     // Return interpolated irradiance
-    return (denominator != 0.0) ? (numerator * (1.0 / denominator)) : Vector3D{ 0.0, 0.0, 0.0 };
+    return numerator / denominator;
 }
 
+
+//////////////////////////////////Not used////////////////////////// I will use it if I can complete them correctly and relate them to the gradient and interpolation.
 // Compute rotational gradient contribution
 Vector3D RendererCaching::computeRotationalGradient(const Vector3D& n, const Vector3D& ni) { //, const Vector3D& rotGrad) {
     return cross(n, ni);// *rotGrad.magnitude();
@@ -252,11 +260,12 @@ Vector3D RendererCaching::computeRotationalGradient(const Vector3D& n, const Vec
 Vector3D RendererCaching::computeTranslationalGradient(const Vector3D& p, const Vector3D& pi) { //, const Vector3D& transGrad) {
     return (p - pi);// *transGrad.magnitude();
 }
+///////////////////////////////////////////////////////////////////
 
 bool RendererCaching::IrradianceGradientHigherThanThreshold(std::vector<std::shared_ptr<OctreeNode>>& nodes, std::vector<Shape*>* objectsList) { // Change it its not working correctly
 
-        const double threshold = 0.04;  // Gradient threshold
-        const double R0 = ComputeAverageDistanceToSurfaces(nodes, objectsList);  // Precompute R0
+        const double threshold = 0.01;  // Gradient threshold
+        const double R0 = ComputeAverageDistanceToSurfacesShared(nodes, objectsList);  // Precompute R0
 
         for (size_t i = 0; i < nodes.size(); ++i) {
             auto node1 = nodes[i];
@@ -310,7 +319,7 @@ bool RendererCaching::IrradianceGradientHigherThanThreshold(std::vector<std::sha
         return false;
 }
 
-double RendererCaching::ComputeAverageDistanceToSurfaces(std::vector<std::shared_ptr<OctreeNode>>& nodes, std::vector<Shape*>* objectsList) {
+double RendererCaching::ComputeAverageDistanceToSurfacesShared(std::vector<std::shared_ptr<OctreeNode>>& nodes, std::vector<Shape*>* objectsList) {
     const int numSamplesPerNode = 64; // Number of rays per node
     double totalDistance = 0.0;
     int totalHitCount = 0;
@@ -343,6 +352,7 @@ double RendererCaching::ComputeAverageDistanceToSurfaces(std::vector<std::shared
             totalHitCount += nodeHitCount;
         }
     }
+
 
     // Compute global average distance, avoid division by zero
     if (totalHitCount > 0) {

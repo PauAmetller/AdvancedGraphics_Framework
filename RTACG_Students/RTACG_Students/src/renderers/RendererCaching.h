@@ -58,7 +58,7 @@ private:
             if (isLeaf) {
                 double halfSize = size / 2.0;
 
-                if (halfSize < 3)
+                if (halfSize < 1)
                     return;
 
                 Intersection its;
@@ -119,27 +119,28 @@ public:
 
     //Builds the Octree where the sample points are stored
 	void IrradianceCache(Camera*& cam, Film* film,
-		std::vector<Shape*>*& objectsList, std::vector<LightSource*>*& lightSourceList);
+		std::vector<Shape*>*& objectsList, std::vector<LightSource*>*& lightSourceList, bool only_irradiance, bool samples_seen);
 
     void subdivideAndCache(OctreeNode* node, Camera* cam, Film* film, std::vector<Shape*>*& objectsList, std::vector<LightSource*>*& lightSourceList);
 
     void ComputeIrradiance(OctreeNode* node, Camera* cam, std::vector<Shape*>*& objectsList, std::vector<LightSource*>*& lightSourceList);
 
-    void paintAll(Film* film, Camera*& cam, std::vector<Shape*>*& objectsList, std::vector<LightSource*>*& lightSourceList); //For visoalization
+    void paintAll(Film* film, Camera*& cam, std::vector<Shape*>*& objectsList, std::vector<LightSource*>*& lightSourceList, bool only_irradiance); //For visoalization
     void paintLeafNodesWhite(OctreeNode* node, Film* film);
 
-    Vector3D GetIrradiance(const Vector3D& point, const Vector3D& normal);
+    Vector3D GetIrradiance(double col, double lin, const Vector3D& point, const Vector3D& normal, std::vector<Shape*>*& objectsList);
 
-    bool isPointInsideRegion(const Vector3D& point, const Vector3D& center, double size);
+    bool isPointInsideRegion(double col, double lin, double node_col, double node_lin, double size);
 
-    Vector3D interpolateIrradiance(const Vector3D& p, const Vector3D& n, std::vector<std::shared_ptr<OctreeNode>> nodes, double a = 1.0);
+    Vector3D interpolateIrradiance(const Vector3D& p, const Vector3D& n, std::vector<OctreeNode*> nodes, double alpha, double beta, double minWeight);
 
     Vector3D computeTranslationalGradient(const Vector3D& p, const Vector3D& pi);// , const Vector3D& transGrad);
     Vector3D computeRotationalGradient(const Vector3D& n, const Vector3D& ni);// , const Vector3D& rotGrad);
 
     bool IrradianceGradientHigherThanThreshold(std::vector<std::shared_ptr<OctreeNode>>& nodes, std::vector<Shape*>* objectsList);
 
-    double ComputeAverageDistanceToSurfaces(std::vector<std::shared_ptr<OctreeNode>>& nodes, std::vector<Shape*>* objectsList);
+    double ComputeAverageDistanceToSurfacesShared(std::vector<std::shared_ptr<OctreeNode>>& nodes, std::vector<Shape*>* objectsList);
+    double ComputeAverageDistanceToSurfaces(std::vector<OctreeNode*>& nodes, std::vector<Shape*>* objectsList);
 
     static RendererCaching* getInstance();
 

@@ -36,10 +36,12 @@ using namespace std::chrono;
 
 typedef std::chrono::duration<double, std::milli> durationMs;
 
-bool has_mirror = true;
-bool has_transmissive = true;
+bool has_mirror = false;
+bool has_transmissive = false;
 char* shader_name = "NEE";   //intersaction, depth, normal, whitted, HDI, ADI, PPT, NEE
-char* rendering_mode = "Caching"; //Caching, Whitout Caching
+char* rendering_mode = "Caching"; //Caching, not_caching_NEE_for_comparation, Whitout Caching
+bool only_irradiance = false;
+bool samples_seen = false;
 
 
 void buildSceneCornellBox(Camera*& cam, Film*& film,
@@ -245,15 +247,16 @@ int main()
     // Create an empty film
     Film *film;
 
-    if (rendering_mode == "Caching") {
+    if (rendering_mode == "Caching" || rendering_mode == "not_caching_NEE_for_comparation") {
         film = new Film(1024, 1024);   //We make it square to prevent possible problems with the Octree
     }
     else {
         film = new Film(720, 512); //default
     }
 
+
     //For IrradianceCaching desactivate mirrors and transmissive materials
-    if (rendering_mode == "Caching") {
+    if (rendering_mode == "Caching" || rendering_mode == "not_caching_NEE_for_comparation") {
         has_mirror = false;
         has_transmissive = false;
         shader_name == "NEE";
@@ -292,7 +295,7 @@ int main()
     else if (shader_name == "PPT") {
         shader = new PPTShader(bgColor);
     }
-    else if (shader_name == "NEE") {
+    else if (shader_name == "NEE" || rendering_mode == "not_caching_NEE_for_comparation") {
         if (rendering_mode == "Caching") {
             shader = new NEEShader(bgColor, 3);
         }
@@ -326,7 +329,7 @@ int main()
     // Launch some rays! TASK 2,3,...   
     auto start = high_resolution_clock::now();
     if (rendering_mode == "Caching") {
-        caching->IrradianceCache(cam, film, myScene.objectsList, myScene.LightSourceList);
+        caching->IrradianceCache(cam, film, myScene.objectsList, myScene.LightSourceList, only_irradiance, samples_seen);
     }
     else {
         raytrace(cam, shader, film, myScene.objectsList, myScene.LightSourceList);
