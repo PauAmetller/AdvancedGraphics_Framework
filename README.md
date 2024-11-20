@@ -1,24 +1,45 @@
-# AdvancedGraphics_Framework
- Ray Tracing
+# **AdvancedGraphics_Framework**  
+**_Ray Tracing_**
 
+---
 
-**Description**
+## **Description**  
+This project builds upon the initial framework provided in the _Advanced Computer Graphics_ course at **University Pompeu Fabra (UPF)**.  
 
-This project builds upon the initial framework provided in the Advanced Computer Graphics course at University Pompeu Fabra (UPF).
-Commit Reference: The second commit includes files from the framework provided during the course.
-Implementation of diferent shaders to calculate Global Ilumination inclusing Pure Path Tracing and Next Event Estimation.
+- **Commit Reference:**  
+  The second commit includes files from the framework provided during the course.  
 
+- **Implemented Features:**  
+  - Implementation of different shaders to calculate **Global Illumination**, from which the most remarkable are:  
+    - _Pure Path Tracing_  
+    - _Next Event Estimation_
 
-**Irradiance Caching**
+---
 
-Implementation of irradiance caching in the RendererCaching, the structure to save the cache point is an octree and for the gradient calculation we used the Split Sphere Gradients, the interpolation of the irradiance is still in process.
+## **Irradiance Caching**  
 
-We have a **few variables** in **main.cpp** that we must take into account to run the Irradiance caching;
+The **Irradiance Caching** feature has been implemented in the `RendererCaching` module. Key aspects include:  
+- The structure used to save cache points is an **_octree_**.  
+- For gradient calculation, **_Split Sphere Gradients_** were utilized.  
+- **_Interpolation of irradiance_** is done using weights that depend on the orientation and distance.  
 
-· First, to run the irradiance caching, you should change the variable **rendering_mode** to be equal to **"Caching"**
+---
 
-· Then, we have two booleans;
+### **Configuration**  
+To enable and configure irradiance caching, take note of the following variables in `main.cpp`:  
 
-    · **only_irradiance:** If this is true, only the irradiance will be shown in the rendered image; otherwise, the diffuse and emissive components will also be applied.
-    
-    · **samples_seen:** This is used to control whether you want the pixels of the cache points to be printed white on the rendered image, or if you don’t want them to be seen at all.
+1. **`rendering_mode`:**  
+   Set this variable to `"Caching"` to activate the irradiance caching mode.  
+
+2. **Booleans:**  
+   - **`only_irradiance`:**  
+     - If **`true`**: Only the irradiance will be shown in the rendered image.  
+     - If **`false`**: The diffuse and emissive components will also be applied.  
+     
+   - **`samples_seen`:**  
+     - Controls the visibility of cache points in the rendered image:  
+       - **`true`**: Pixels corresponding to cache points will appear white.  
+       - **`false`**: Cache points will not be visible.  
+
+---
+
