@@ -150,7 +150,7 @@ Vector3D NEEShader::computeColor(const Ray& r, const std::vector<Shape*>& objLis
                 }
             }
             else {
-                emitted_radiance = material.getEmissiveRadiance(); //If emissive is half result is correct
+                emitted_radiance = material.getEmissiveRadiance(); 
             }
             color += emitted_radiance + light / Number_Samples;
         }

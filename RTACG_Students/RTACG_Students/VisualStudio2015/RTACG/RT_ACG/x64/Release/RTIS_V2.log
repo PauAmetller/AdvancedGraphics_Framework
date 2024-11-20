@@ -1,13 +1,27 @@
-﻿  main.cpp
-C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\main.cpp(262,21): warning C4553: '==': result of expression not used; did you intend '='?
-C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\main.cpp(346,21): warning C4244: 'initializing': conversion from '_Rep' to 'float', possible loss of data
-C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\main.cpp(346,21): warning C4244:         with
-C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\main.cpp(346,21): warning C4244:         [
-C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\main.cpp(346,21): warning C4244:             _Rep=double
-C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\main.cpp(346,21): warning C4244:         ]
+﻿  RendererCaching.cpp
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(24,14): warning C4244: 'initializing': conversion from 'double' to 'size_t', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(25,14): warning C4244: 'initializing': conversion from 'double' to 'size_t', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(31,41): warning C4244: 'argument': conversion from 'size_t' to 'const double', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(31,38): warning C4244: 'argument': conversion from 'size_t' to 'const double', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(35,77): warning C4244: 'argument': conversion from 'size_t' to 'double', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(35,74): warning C4244: 'argument': conversion from 'size_t' to 'double', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(35,61): warning C4244: 'argument': conversion from 'const _Ty' to 'double', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(35,61): warning C4244:         with
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(35,61): warning C4244:         [
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(35,61): warning C4244:             _Ty=size_t
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(35,61): warning C4244:         ]
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(58,89): warning C4244: 'argument': conversion from 'size_t' to 'double', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(58,70): warning C4244: 'argument': conversion from 'size_t' to 'double', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(89,108): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(129,54): warning C4244: 'argument': conversion from 'size_t' to 'double', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(129,49): warning C4244: 'argument': conversion from 'size_t' to 'double', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(133,54): warning C4244: 'argument': conversion from 'size_t' to 'double', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(133,49): warning C4244: 'argument': conversion from 'size_t' to 'double', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(149,48): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\src\renderers\RendererCaching.cpp(149,37): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
   Generating code
-  3 of 1207 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+  4 of 1207 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    4 functions had inline decision re-evaluated but remain unchanged
+    12 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   RTIS_V2.vcxproj -> C:\Users\pauam\Documents\GitHub\Advanced Computer Graphics\AdvancedGraphics_Framework\RTACG_Students\RTACG_Students\VisualStudio2015\RTACG\x64\Release\RT_ACG.exe

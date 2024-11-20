@@ -10,6 +10,7 @@ RendererCaching::RendererCaching(Shader* shader) {
     this->node_count = 0;
     this->shader = shader;
     this->num_samples = 254;
+    this->octree_root = nullptr;
 
     if (instance == nullptr) {
         instance = this; // Set the current object as the singleton instance
@@ -33,16 +34,13 @@ void RendererCaching::IrradianceCache(Camera*& cam, Film* film,
     {
         this->octree_root = new OctreeNode(its.itsPoint, max(X, Y), its, X, Y);
         node_count++;
-        //if(octree_root == nullptr)
-        std::cerr << "Point (" << octree_root->col << ", " << octree_root->lin 
-            << ") Size;" <<octree_root->size<< "\n";
        
         subdivideAndCache(this->octree_root, cam, film, objectsList, lightSourceList);
     }
     else {
         // Discard point if it doesn't intersect any surface
-        std::cerr << "Point (" << its.itsPoint.x << ", " << its.itsPoint.y << ", " << its.itsPoint.z
-            << ") does not intersect any surface.\n";
+        std::cerr << "Pixel (" << X << ", " << Y
+            << ") ray does not intersect any surface.\n";
     }
     std::cerr << this->node_count << std::endl;
 
@@ -148,7 +146,6 @@ void RendererCaching::paintLeafNodesWhite(OctreeNode* node, Film* film) {
 
         // Ensure the pixel is within the bounds of the film (image)
         if (node->col >= 0 && node->col < film->getWidth() && node->lin >= 0 && node->lin < film->getHeight()) {
-            //std::cerr <<  node->col <<  "hola " <<  node->lin << std::endl;
             film->setPixelValue(node->col, node->lin, Vector3D(1.0));
         }
     }
