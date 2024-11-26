@@ -47,9 +47,15 @@ The **Irradiance Caching** feature has been implemented in the `RendererCaching`
 To enable and configure irradiance caching, take note of the following variables in `main.cpp`:  
 
 1. **`rendering_mode`:**  
-   Set this variable to `"Caching"` to activate the irradiance caching mode.  
+   Set this variable to `"Caching"` to activate the irradiance caching mode.
 
-2. **Booleans:**  
+2. **`shader_DI_for_caching_renderer`:**
+   - **Three modes; (Only work if only_irradiance is false)**
+     - Set this variable to "ADI" to use the area direct illumination shader for the direct light
+     - Set this variable to "NEE" to use the direct radiance from the NEE shader for the direct light
+     - Set this variable to "none" or anithing else to use only the difuse and emitted from the materials
+
+3. **Booleans:**  
    - **`only_irradiance`:**  
      - If **`true`**: Only the irradiance will be shown in the rendered image.  
      - If **`false`**: The diffuse and emissive components will also be applied.  
