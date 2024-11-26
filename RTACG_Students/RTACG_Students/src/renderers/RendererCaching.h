@@ -115,7 +115,7 @@ private:
 
 public:
 
-    RendererCaching(Shader* shader);
+    RendererCaching(Shader* shader, char* shader_DI);
 
     //Builds the Octree where the sample points are stored
 	void IrradianceCache(Camera*& cam, Film* film,
@@ -140,11 +140,12 @@ public:
     bool IrradianceGradientHigherThanThreshold(std::vector<std::shared_ptr<OctreeNode>>& nodes, std::vector<Shape*>* objectsList);
 
     double ComputeAverageDistanceToSurfacesShared(std::vector<std::shared_ptr<OctreeNode>>& nodes, std::vector<Shape*>* objectsList);
-    double ComputeAverageDistanceToSurfaces(std::vector<OctreeNode*>& nodes, std::vector<Shape*>* objectsList);
 
     static RendererCaching* getInstance();
 
     Shader* shader;
+    Shader* shader_direct_illumination;
+    char* shader_DI;
 
 };
 

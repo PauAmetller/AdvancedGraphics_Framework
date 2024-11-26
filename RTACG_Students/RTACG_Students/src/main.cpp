@@ -40,7 +40,8 @@ bool has_mirror = false;
 bool has_transmissive = false;
 char* shader_name = "NEE";   //intersaction, depth, normal, whitted, HDI, ADI, PPT, NEE
 char* rendering_mode = "Caching"; //Caching, not_caching_NEE_for_comparation, Whitout Caching
-bool only_irradiance = false;
+char* shader_DI_for_caching_renderer = "NEE";  //ADI, NEE, None(If none the diffuse material is applyed)
+bool only_irradiance = true;
 bool samples_seen = false;
 
 
@@ -324,7 +325,7 @@ int main()
     //PaintImage(film);
 
     //Preferably a shader that calculates the radiance, if not it won't be correct to use it for irradiance caching //use NEE (with out mirrors and transmissives)
-    RendererCaching* caching = new RendererCaching(shader);
+    RendererCaching* caching = new RendererCaching(shader, shader_DI_for_caching_renderer);
 
     // Launch some rays! TASK 2,3,...   
     auto start = high_resolution_clock::now();

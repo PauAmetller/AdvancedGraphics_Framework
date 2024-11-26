@@ -5,12 +5,14 @@
 RendererCaching* RendererCaching::instance = nullptr;
 
 //Constructor
-RendererCaching::RendererCaching(Shader* shader) {
+RendererCaching::RendererCaching(Shader* shader, char* shader_DI_) {
     this->max_nodes = 100000;
     this->node_count = 0;
     this->shader = shader;
     this->num_samples = 254;
     this->octree_root = nullptr;
+    this->shader_direct_illumination =  new ADIShader(Vector3D(0.0));
+    this->shader_DI = shader_DI_;
 
     if (instance == nullptr) {
         instance = this; // Set the current object as the singleton instance
@@ -34,7 +36,7 @@ void RendererCaching::IrradianceCache(Camera*& cam, Film* film,
     {
         this->octree_root = new OctreeNode(its.itsPoint, max(X, Y), its, X, Y);
         node_count++;
-       
+        ComputeIrradiance(octree_root, cam, objectsList, lightSourceList);
         subdivideAndCache(this->octree_root, cam, film, objectsList, lightSourceList);
     }
     else {
@@ -52,8 +54,6 @@ void RendererCaching::IrradianceCache(Camera*& cam, Film* film,
 }
 
 void RendererCaching::subdivideAndCache(OctreeNode* node, Camera* cam, Film* film, std::vector<Shape*>*& objectsList, std::vector<LightSource*>*& lightSourceList) {
-
-    ComputeIrradiance(node, cam, objectsList, lightSourceList);
 
     node->subdivide(cam, objectsList, lightSourceList, film->getWidth(), film->getHeight());
 
@@ -74,9 +74,11 @@ void RendererCaching::subdivideAndCache(OctreeNode* node, Camera* cam, Film* fil
 
 }
 
+
 void RendererCaching::ComputeIrradiance(OctreeNode* node, Camera* cam, std::vector<Shape*>*& objectsList, std::vector<LightSource*>*& lightSourceList) {
 
     Vector3D radiance;
+    Vector3D direct_illumination;
     double weightSum = 0.0;
 
     for (int i = 0; i < this->num_samples; i++) {
@@ -105,6 +107,7 @@ void RendererCaching::paintAll(Film* film, Camera*& cam, std::vector<Shape*>*& o
     size_t resY = film->getHeight();
 
     Shader* color_shader = new WhittedIntegrator(shader->bgColor);
+    NEEShader* shader_direct = dynamic_cast<NEEShader*>(this->shader);
 
     for (size_t lin = 0; lin < resY; lin++)
     {
@@ -121,8 +124,8 @@ void RendererCaching::paintAll(Film* film, Camera*& cam, std::vector<Shape*>*& o
             // Generate the camera ray
             Ray cameraRay = cam->generateRay(x, y);
             Vector3D pixelColor = Vector3D(0.0);
+            Vector3D direct_light = Vector3D(0.0);
 
-            //printf("New Ray \n");
             Intersection its;
             if (Utils::getClosestIntersection(cameraRay, *objectsList, its)) {
                 if (only_irradiance) {
@@ -130,8 +133,21 @@ void RendererCaching::paintAll(Film* film, Camera*& cam, std::vector<Shape*>*& o
                 }
                 else {
                     const Material& material = its.shape->getMaterial();
+                    if (material.isEmissive()) {
+                        pixelColor += material.getEmissiveRadiance();
+                    }
+                    else {
+                        if (shader_DI == "ADI") {
+                            pixelColor += this->shader_direct_illumination->computeColor(cameraRay, *objectsList, *lightSourceList);
+                        }
+                        else if(shader_DI == "NEE") {
+                            for (int i = 0; i < this->num_samples; i++) {
+                                direct_light += shader_direct->ComputeDirectRadiance(its, -cameraRay.d, *objectsList, *lightSourceList);
+                            }
+                            pixelColor += direct_light / this->num_samples;
+                        }
+                    }
                     pixelColor += GetIrradiance(col, lin, its.itsPoint, its.normal, objectsList) * material.getDiffuseReflectance();
-                    pixelColor += material.getEmissiveRadiance();
                 }
             }
 
