@@ -1,0 +1,6 @@
+.vs/*
+.vscode/*
+RTACG_Students/.vs/*
+RTACG_Students/RTACG_Students/.vscode/*
+RTACG_Students/RTACG_Students/VisualStudio2015/*
+imgui.ini
